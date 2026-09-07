@@ -1,0 +1,839 @@
+---
+import Footer from '../components/Footer.astro';
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy | Dan-Gracious Land Nursery & Primary School</title>
+  <meta name="description" content="Read the official Privacy Policy for Dan-Gracious Land Nursery & Primary School. Learn how we handle data, protect children's privacy, and collect information." />
+
+  <meta property="og:title" content="Privacy Policy - Dan-Gracious Land Nursery & Primary School" />
+  <meta property="og:description" content="Learn how Dan-Gracious Land Nursery & Primary School protects your privacy and handles pupil data." />
+  <meta property="og:type" content="website" />
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png">
+  <link rel="manifest" href="/favicon_io/site.webmanifest">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    "name": "Dan-Gracious Land Nursery & Primary School",
+    "alternateName": "DGL",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "27, Asunbe Street, Off Tejumola Estate, Arobaba Street",
+      "addressLocality": "Idimu",
+      "addressRegion": "Lagos",
+      "addressCountry": "NG"
+    },
+    "url": "https://emmystack01.com"
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800;900&family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* -------------------------------------------------------------------------- */
+    /* 1. DESIGN SYSTEM — TOKENS SHARED WITH THE HOMEPAGE                        */
+    /* -------------------------------------------------------------------------- */
+    :root {
+      --color-navy: #0E2154;
+      --color-navy-deep: #081533;
+      --color-navy-soft: #1C3576;
+      --color-cream: #FFF9EC;
+      --color-cream-card: #FFFFFF;
+      --color-gold: #FFC72C;
+      --color-gold-deep: #F2A900;
+      --color-gold-light: #FFF1C2;
+      --color-orange: #F0640F;
+      --color-orange-hover: #D4530A;
+      --color-green: #2E9E4F;
+      --color-blue: #1F5FD1;
+      --color-purple: #6B3FA0;
+      --color-red: #C81E2C;
+      --color-text-dark: #101B3D;
+      --color-text-muted: #5B6280;
+      --color-white: #FFFFFF;
+      --color-surface-soft: #F4EFE0;
+      --color-border: #E7DFC8;
+
+      --font-display: 'Poppins', -apple-system, sans-serif;
+      --font-script: 'Caveat', cursive;
+      --font-body: 'Inter', -apple-system, sans-serif;
+
+      --radius-sm: 10px;
+      --radius-md: 18px;
+      --radius-lg: 28px;
+      --radius-full: 9999px;
+
+      --shadow-sm: 0 4px 10px -2px rgba(14, 33, 84, 0.10);
+      --shadow-md: 0 14px 28px -8px rgba(14, 33, 84, 0.18);
+      --shadow-lg: 0 30px 60px -16px rgba(14, 33, 84, 0.30);
+
+      --glass-bg: rgba(14, 33, 84, 0.97);
+      --glass-border: rgba(255, 199, 44, 0.25);
+
+      --container-max: 1240px;
+      --content-max: 800px;
+      --header-height: 84px;
+    }
+
+    /* -------------------------------------------------------------------------- */
+    /* 2. RESET & BASE                                                           */
+    /* -------------------------------------------------------------------------- */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--color-cream);
+      color: var(--color-text-dark);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; font-size: inherit; cursor: pointer; border: none; background: none; }
+
+    .container {
+      width: 100%;
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font-display);
+      font-weight: 800;
+      line-height: 1.25;
+      color: var(--color-navy);
+      letter-spacing: -0.01em;
+      scroll-margin-top: calc(var(--header-height) + 2rem);
+    }
+
+    /* -------------------------------------------------------------------------- */
+    /* 3. BUTTONS                                                                 */
+    /* -------------------------------------------------------------------------- */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      padding: 0.9rem 2.1rem;
+      font-weight: 800;
+      font-size: 1rem;
+      border-radius: var(--radius-full);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      text-align: center;
+      min-height: 52px;
+    }
+
+    .btn-primary {
+      background-color: var(--color-orange);
+      color: var(--color-white);
+      box-shadow: 0 10px 22px -6px rgba(240, 100, 15, 0.5);
+    }
+    .btn-primary:hover {
+      background-color: var(--color-orange-hover);
+      transform: translateY(-3px);
+      box-shadow: 0 14px 26px -6px rgba(240, 100, 15, 0.55);
+    }
+
+    .btn-secondary {
+      background-color: var(--color-navy);
+      color: var(--color-white);
+      box-shadow: 0 10px 20px -5px rgba(10, 15, 29, 0.3);
+    }
+    .btn-secondary:hover {
+      background-color: var(--color-navy-soft);
+      transform: translateY(-3px);
+      box-shadow: 0 14px 24px -4px rgba(10, 15, 29, 0.4);
+    }
+
+    .btn-outline {
+      border: 2.5px solid var(--color-gold);
+      color: var(--color-navy);
+      background: var(--color-white);
+    }
+    .btn-outline:hover {
+      background-color: var(--color-gold);
+      color: var(--color-navy);
+      transform: translateY(-3px);
+    }
+
+    .btn-gold {
+      background-color: var(--color-gold);
+      color: var(--color-navy);
+      box-shadow: 0 10px 20px -6px rgba(255, 199, 44, 0.55);
+    }
+    .btn-gold:hover {
+      background-color: var(--color-gold-deep);
+      transform: translateY(-3px);
+    }
+
+    /* Level-color ribbon strip — echoes the flyer's Creche/Nursery/Primary/Secondary bars */
+    .level-stripe { display: flex; height: 7px; width: 100%; }
+    .level-stripe span { flex: 1; }
+    .level-stripe .s-orange { background: var(--color-orange); }
+    .level-stripe .s-green { background: var(--color-green); }
+    .level-stripe .s-blue { background: var(--color-blue); }
+    .level-stripe .s-purple { background: var(--color-purple); }
+
+    /* -------------------------------------------------------------------------- */
+    /* 4. HEADER & NAVIGATION                                                     */
+    /* -------------------------------------------------------------------------- */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background-color: var(--color-navy);
+      height: var(--header-height);
+      display: flex;
+      align-items: center;
+      box-shadow: 0 6px 18px -8px rgba(8, 21, 51, 0.45);
+    }
+
+    .header .container { display: flex; align-items: center; justify-content: space-between; }
+
+    .brand { display: flex; align-items: center; gap: 0.85rem; }
+
+    .brand-badge { width: auto; height: 60px; display: flex; align-items: center; justify-content: center; }
+
+    .brand-title {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.05rem;
+      line-height: 1;
+      color: var(--color-white);
+      letter-spacing: 0.01em;
+    }
+
+    .brand-subtitle {
+      font-size: 0.72rem;
+      color: var(--color-gold-light);
+      font-weight: 600;
+      display: block;
+      margin-top: 3px;
+    }
+
+    .nav-links { display: flex; align-items: center; gap: 2.25rem; list-style: none; }
+    .nav-links a { font-weight: 700; font-size: 0.92rem; color: var(--color-white); transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--color-gold); }
+
+    .mobile-menu-btn { display: none; flex-direction: column; gap: 6px; padding: 0.5rem; }
+    .mobile-menu-btn span { width: 26px; height: 2.5px; background-color: var(--color-gold); border-radius: 4px; transition: all 0.3s ease; }
+
+    /* -------------------------------------------------------------------------- */
+    /* 5. BREADCRUMBS & PAGE HEADER                                              */
+    /* -------------------------------------------------------------------------- */
+    .breadcrumbs-bar { padding: 1.25rem 0 0.5rem 0; background: var(--color-cream); }
+
+    .breadcrumbs {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-text-muted);
+      list-style: none;
+    }
+
+    .breadcrumbs a { color: var(--color-navy); }
+    .breadcrumbs a:hover { color: var(--color-orange); }
+    .breadcrumbs li[aria-current] { color: var(--color-orange); font-weight: 800; }
+
+    .page-header { padding: 1.5rem 0 2.5rem 0; }
+
+    .page-header-content { max-width: var(--content-max); }
+
+    .page-title {
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      margin-bottom: 0.75rem;
+      font-weight: 900;
+    }
+
+    .page-subtext {
+      font-size: 1.1rem;
+      color: var(--color-text-muted);
+      margin-bottom: 1.1rem;
+    }
+
+    .last-updated-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--color-navy);
+      background-color: var(--color-white);
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--color-border);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* -------------------------------------------------------------------------- */
+    /* 6. QUICK SUMMARY CARD                                                      */
+    /* -------------------------------------------------------------------------- */
+    .summary-section { margin-bottom: 3.5rem; }
+
+    .summary-card {
+      background: var(--color-white);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 2.25rem;
+      box-shadow: var(--shadow-sm);
+      border-top: 6px solid var(--color-gold);
+    }
+
+    .summary-card h2 {
+      font-size: 1.4rem;
+      margin-bottom: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .summary-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 0.9rem;
+    }
+
+    .summary-list li {
+      position: relative;
+      padding-left: 1.6rem;
+      font-size: 0.95rem;
+      color: var(--color-text-dark);
+    }
+
+    .summary-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--color-green);
+      font-weight: 800;
+    }
+
+    /* -------------------------------------------------------------------------- */
+    /* 7. LAYOUT GRID (STICKY TOC + CONTENT COLUMN)                              */
+    /* -------------------------------------------------------------------------- */
+    .policy-layout-grid {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 3.5rem;
+      align-items: start;
+      margin-bottom: 5rem;
+    }
+
+    /* TABLE OF CONTENTS */
+    .toc-wrapper {
+      position: sticky;
+      top: calc(var(--header-height) + 7px + 1.5rem);
+      background: var(--color-white);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .toc-title {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      color: var(--color-navy);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .toc-toggle-btn { display: none; font-size: 1.25rem; color: var(--color-navy); }
+
+    .toc-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      font-size: 0.88rem;
+    }
+
+    .toc-list a {
+      color: var(--color-text-muted);
+      display: block;
+      padding: 0.4rem 0.6rem;
+      border-radius: var(--radius-sm);
+      transition: all 0.2s ease;
+      font-weight: 600;
+    }
+
+    .toc-list a:hover,
+    .toc-list a.active {
+      color: var(--color-navy);
+      background-color: var(--color-gold-light);
+      font-weight: 800;
+    }
+
+    /* POLICY CONTENT BODY */
+    .policy-content { max-width: var(--content-max); }
+
+    .policy-section {
+      margin-bottom: 3.5rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .policy-section:last-of-type { border-bottom: none; padding-bottom: 0; }
+
+    .policy-section h2 { font-size: 1.6rem; margin-bottom: 1.25rem; color: var(--color-navy); }
+    .policy-section h3 { font-size: 1.2rem; margin: 1.5rem 0 0.75rem 0; color: var(--color-navy); }
+
+    .policy-section p {
+      font-size: 1rem;
+      color: var(--color-text-dark);
+      margin-bottom: 1.25rem;
+      line-height: 1.75;
+    }
+
+    .policy-section ul { margin-bottom: 1.5rem; padding-left: 1.5rem; }
+    .policy-section li { margin-bottom: 0.6rem; color: var(--color-text-dark); }
+
+    .policy-content a, .contact-details-box a, .summary-card a {
+      color: var(--color-orange);
+      text-decoration: underline;
+      font-weight: 600;
+    }
+    .policy-content a:hover, .contact-details-box a:hover, .summary-card a:hover {
+      color: var(--color-orange-hover);
+    }
+
+    .highlight-box {
+      background: var(--color-surface-soft);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .highlight-box.alert {
+      background: var(--color-gold-light);
+      border-color: var(--color-gold);
+      border-left: 4px solid var(--color-gold-deep);
+    }
+
+    /* -------------------------------------------------------------------------- */
+    /* 8. PARENT CONCERN CTA CARD & CONTACT — navy gradient panel                 */
+    /* -------------------------------------------------------------------------- */
+    .parent-cta-card {
+      background: var(--color-navy);
+      background-image: radial-gradient(circle at 90% 10%, rgba(255,199,44,0.12), transparent 55%);
+      color: var(--color-white);
+      border-radius: var(--radius-lg);
+      padding: 2.75rem;
+      margin: 3.5rem 0;
+      box-shadow: var(--shadow-lg);
+      border-top: 6px solid var(--color-gold);
+    }
+
+    .parent-cta-card h3 { color: var(--color-white); font-size: 1.4rem; margin-bottom: 0.75rem; }
+    .parent-cta-card p { color: rgba(255, 255, 255, 0.85); font-size: 0.95rem; margin-bottom: 1.5rem; }
+
+    .contact-details-box {
+      background: var(--color-white);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 1.75rem;
+      margin-top: 1rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .contact-details-box p { margin-bottom: 0.5rem; font-size: 0.95rem; color: var(--color-text-dark); }
+
+    /* -------------------------------------------------------------------------- */
+    /* 9. FOOTER                                                                  */
+    /* -------------------------------------------------------------------------- */
+    .footer {
+      background-color: var(--color-navy-deep);
+      color: var(--color-white);
+      padding: 5rem 0 2.5rem 0;
+      border-top: 4px solid var(--color-gold);
+    }
+
+    .footer-grid { display: grid; grid-template-columns: 2fr repeat(3, 1fr); gap: 3rem; margin-bottom: 4rem; }
+
+    .footer-brand p { color: rgba(255, 255, 255, 0.7); margin-top: 1.25rem; font-size: 0.95rem; max-width: 320px; line-height: 1.6; }
+
+    .footer-column h4 { color: var(--color-gold); font-size: 1.02rem; margin-bottom: 1.5rem; font-weight: 800; }
+    .footer-column ul { list-style: none; }
+    .footer-column li { margin-bottom: 0.85rem; }
+    .footer-column a, .address { color: rgba(255, 255, 255, 0.75); font-size: 0.95rem; transition: color 0.2s; }
+    .footer-column a:hover { color: var(--color-gold); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      padding-top: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.25rem;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .footer-bottom-links { display: flex; align-items: center; gap: 1.5rem; }
+    .footer-bottom a { color: rgba(255, 255, 255, 0.75); transition: color 0.2s; }
+    .footer-bottom a:hover { color: var(--color-gold); }
+
+    /* -------------------------------------------------------------------------- */
+    /* 10. RESPONSIVE                                                            */
+    /* -------------------------------------------------------------------------- */
+    @media (max-width: 990px) {
+      .policy-layout-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .toc-wrapper { position: static; width: 100%; }
+      .toc-toggle-btn { display: block; }
+      .toc-list.collapsed { display: none; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 850px) {
+      .nav-links, .header-cta { display: none; }
+      .mobile-menu-btn { display: flex; }
+      .footer-grid { grid-template-columns: 1fr; }
+
+      .nav-links.active {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: var(--header-height);
+        left: 0;
+        right: 0;
+        background-color: var(--color-navy);
+        padding: 1.75rem;
+        border-bottom: 3px solid var(--color-gold);
+        box-shadow: var(--shadow-md);
+        gap: 1.25rem;
+        z-index: 999;
+      }
+
+      .mobile-menu-btn.active span:nth-child(1) { transform: translateY(8.5px) rotate(45deg); }
+      .mobile-menu-btn.active span:nth-child(2) { opacity: 0; }
+      .mobile-menu-btn.active span:nth-child(3) { transform: translateY(-8.5px) rotate(-45deg); }
+
+      .container { padding: 0 1rem; }
+
+      .footer-bottom { flex-direction: column; text-align: center; gap: 1rem; }
+      .footer-bottom-links { flex-wrap: wrap; justify-content: center; gap: 1rem; }
+    }
+
+    @media (max-width: 680px) {
+      .footer-grid { grid-template-columns: 1fr; }
+      .summary-card, .parent-cta-card { padding: 1.75rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="container">
+      <a href="/" class="brand">
+        <img src="/asset/DGLS-Badge-two-colour.svg" class="brand-badge" alt="DAN-GRACIOUS LAND Badge">
+        <div class="brand-text">
+          <span class="brand-title">DAN-GRACIOUS LAND</span>
+          <span class="brand-subtitle">Nursery & Primary School</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/pupils">Pupils</a></li>
+          <li><a href="/life">Life at DGL</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-cta">
+        <a href="/#contact" class="btn btn-gold">Enquire Now</a>
+      </div>
+
+      <button class="mobile-menu-btn" aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="level-stripe" aria-hidden="true">
+    <span class="s-orange"></span><span class="s-green"></span><span class="s-blue"></span><span class="s-purple"></span>
+  </div>
+
+  <main>
+    <div class="breadcrumbs-bar">
+      <div class="container">
+        <ul class="breadcrumbs">
+          <li><a href="/">Home</a></li>
+          <li>›</li>
+          <li aria-current="page">Privacy Policy</li>
+        </ul>
+      </div>
+    </div>
+
+    <section class="page-header">
+      <div class="container">
+        <div class="page-header-content">
+          <h1 class="page-title">Privacy Policy</h1>
+          <p class="page-subtext">Your privacy matters to us. Here's how Dan-Gracious Land Nursery & Primary School handles information shared through this website.</p>
+          <div class="last-updated-tag">
+            <span>📅</span>
+            <span>Last Updated: [Verified Publication Date]</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container summary-section">
+      <div class="summary-card">
+        <h2><span>📋</span> The Short Version</h2>
+        <ul class="summary-list">
+          <li>We collect information when you voluntarily provide it through our website.</li>
+          <li>We use information to respond to enquiries and manage daily operations.</li>
+          <li>We take children's privacy and online safety seriously.</li>
+          <li>We do not publish pupil photos or information without appropriate permission.</li>
+          <li>We only collect personal information that we actually need.</li>
+          <li>You can contact the school at any time with questions about your information.</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="container">
+      <div class="policy-layout-grid">
+
+        <aside class="toc-wrapper">
+          <div class="toc-title">
+            <span>Table of Contents</span>
+            <button class="toc-toggle-btn" id="toc-toggle" aria-label="Toggle Table of Contents">▼</button>
+          </div>
+          <ol class="toc-list" id="toc-list">
+            <li><a href="#sec-1">1. Information We Collect</a></li>
+            <li><a href="#sec-2">2. How We Use Information</a></li>
+            <li><a href="#sec-3">3. Children's Privacy</a></li>
+            <li><a href="#sec-4">4. Pupil Photos & Achievements</a></li>
+            <li><a href="#sec-5">5. Cookies & Analytics</a></li>
+            <li><a href="#sec-6">6. Third-Party Services</a></li>
+            <li><a href="#sec-7">7. How We Protect Information</a></li>
+            <li><a href="#sec-8">8. How Long We Keep Information</a></li>
+            <li><a href="#sec-9">9. When We Share Information</a></li>
+            <li><a href="#sec-10">10. Your Privacy Rights</a></li>
+            <li><a href="#sec-11">11. Policy Changes</a></li>
+            <li><a href="#sec-12">12. Contact Us About Privacy</a></li>
+          </ol>
+        </aside>
+
+        <article class="policy-content">
+
+          <section id="sec-1" class="policy-section">
+            <h2>1. Information We Collect</h2>
+            <p>Dan-Gracious Land Nursery & Primary School ("DGL", "we", "our") collects personal information to deliver educational services, respond to enquiries, and communicate effectively with parents and prospective families.</p>
+
+            <h3>Information You Provide Voluntarily</h3>
+            <p>We collect information directly from you when you complete forms on our website or communicate with us. This may include:</p>
+            <ul>
+              <li><strong>Contact Enquiries:</strong> Full name, phone number, email address, and subject/message details submitted via our contact forms.</li>
+              <li><strong>Admission Queries:</strong> Parent or guardian names, contact details, and basic entry queries regarding prospective pupils.</li>
+            </ul>
+
+            <h3>Automatically Collected Technical Data</h3>
+            <p>When you visit our website, standard technical information may be automatically registered by our web hosting infrastructure (such as Vercel or Cloudflare) to ensure platform performance, security, and stability. This may include basic device type, browser information, and referral path data.</p>
+          </section>
+
+          <section id="sec-2" class="policy-section">
+            <h2>2. How We Use Information</h2>
+            <p>We process personal data for clear, practical purposes related to running our school and assisting families:</p>
+            <ul>
+              <li>Responding directly to parent or visitor enquiries submitted online.</li>
+              <li>Providing requested details regarding admissions and school events.</li>
+              <li>Communicating important administrative updates to current families.</li>
+              <li>Ensuring website security, stability, and operational performance.</li>
+              <li>Meeting regulatory and educational record-keeping requirements under applicable law.</li>
+            </ul>
+          </section>
+
+          <section id="sec-3" class="policy-section">
+            <h2>3. Children's Privacy</h2>
+            <p>As a nursery and primary educational institution, protecting the privacy and safety of children is fundamental to our values and operations.</p>
+            <div class="highlight-box alert">
+              <p style="margin-bottom: 0;"><strong>Important Safeguard:</strong> Identifiable information regarding pupils is treated with heightened privacy protections. We do not knowingly collect personal contact information directly from young children through this website.</p>
+            </div>
+            <p>All online forms and contact features are designed for use by parents, legal guardians, and adult visitors.</p>
+          </section>
+
+          <section id="sec-4" class="policy-section">
+            <h2>4. Pupil Photos & Achievements</h2>
+            <p>We take pride in celebrating pupil achievements, academic progress, creative projects, sports events, and general school activities.</p>
+            <p>Content such as class group photographs, academic recognition, or event media may appear on the website under the following operational guidelines:</p>
+            <ul>
+              <li><strong>Parental Permission:</strong> Identifiable pupil photographs or featured achievements are published based on verified parental/guardian consent or established school publication permissions.</li>
+              <li><strong>Minimal Identification:</strong> We aim to avoid pairing full personal details with pupil photographs where unnecessary.</li>
+            </ul>
+          </section>
+
+          <div class="parent-cta-card">
+            <h3>Have a concern about information about your child?</h3>
+            <p>If you have a question or concern about a photograph, name, achievement, or other information about your child appearing on the website, please contact the school administration.</p>
+            <a href="tel:+2340000000000" class="btn btn-primary" style="color: #FFFFFF; text-decoration: none;">Contact DGL →</a>
+          </div>
+
+          <section id="sec-5" class="policy-section">
+            <h2>5. Cookies & Website Analytics</h2>
+            <p>Cookies are small text files placed on your device to help web pages load efficiently and function securely.</p>
+            <p>Our website utilizes minimal operational cookies required for page performance and layout settings. If third-party analytics tools are active, they gather aggregated, non-identifiable usage statistics to help us evaluate page layout and speed.</p>
+            <p>You can adjust your browser settings to block or disable cookies at any time, though some minor site display features may operate differently.</p>
+          </section>
+
+          <section id="sec-6" class="policy-section">
+            <h2>6. Third-Party Services</h2>
+            <p>Our website connects to select external services to improve parent communication and feature access:</p>
+            <ul>
+              <li><strong>WhatsApp:</strong> Clicking our WhatsApp CTA redirects you directly to WhatsApp (operated by Meta Platforms, Inc.). Any communication over WhatsApp is subject to Meta's privacy policies.</li>
+              <li><strong>YouTube:</strong> Where school videos or activity recordings are embedded via YouTube, interaction with the video player is subject to Google/YouTube privacy terms.</li>
+              <li><strong>Maps:</strong> Map directions links redirect to standard map services (such as Google Maps) under their respective privacy policies.</li>
+            </ul>
+          </section>
+
+          <section id="sec-7" class="policy-section">
+            <h2>7. How We Protect Information</h2>
+            <p>We maintain reasonable technical and administrative safeguards to protect personal information submitted through the website against unauthorized access, loss, or misuse. Our site utilizes HTTPS encryption protocols for all data transmission.</p>
+            <p>While we take active steps to safeguard your data, no internet transmission or electronic storage method can guarantee absolute security.</p>
+          </section>
+
+          <section id="sec-8" class="policy-section">
+            <h2>8. How Long We Keep Information</h2>
+            <p>We retain personal information submitted through website forms only for as long as necessary to fulfill the purpose of your enquiry, support admission processing, or satisfy applicable legal and operational standards.</p>
+          </section>
+
+          <section id="sec-9" class="policy-section">
+            <h2>9. When We Share Information</h2>
+            <p>Dan-Gracious Land Nursery & Primary School does <strong>not</strong> sell, rent, or trade personal data or pupil information to third parties or marketing agencies.</p>
+            <p>Information may only be disclosed if required by law enforcement, legal process, or to protect the safety and rights of our pupils, staff, or community.</p>
+          </section>
+
+          <section id="sec-10" class="policy-section">
+            <h2>10. Your Privacy Rights</h2>
+            <p>Depending on your location and applicable data protection regulations, parents and guardians have rights regarding personal information, including:</p>
+            <ul>
+              <li>The right to request access to personal information held by the school.</li>
+              <li>The right to request correction of inaccurate details.</li>
+              <li>The right to request deletion of personal information where legally permitted.</li>
+              <li>The right to withdraw previously granted consent for pupil photograph publication.</li>
+            </ul>
+          </section>
+
+          <section id="sec-11" class="policy-section">
+            <h2>11. Changes to This Privacy Policy</h2>
+            <p>We may update this Privacy Policy periodically to reflect changes in our website features, school procedures, or legal requirements. Updated policies will be published directly on this page with a revised "Last Updated" date.</p>
+          </section>
+
+          <section id="sec-12" class="policy-section">
+            <h2>12. Contact Us About Privacy</h2>
+            <p>If you have questions, concerns, or requests regarding this Privacy Policy or how your information is handled, please contact the school administration:</p>
+
+            <div class="contact-details-box">
+              <p><strong>Dan-Gracious Land Nursery & Primary School</strong></p>
+              <p>Address: 27, Asunbe Street, Off Tejumola Estate, Arobaba Street, Idimu, Lagos State</p>
+              <p>Phone: <a href="tel:+2340000000000">+234 000 000 0000</a></p>
+              <p>Email: <a href="mailto:info@dglschool.com">info@dglschool.com</a></p>
+            </div>
+
+          </section>
+
+        </article>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+
+  <script src="asset/script/year.js" is:inline></script>
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Mobile Header Navigation Menu
+      const mobileBtn = document.querySelector('.mobile-menu-btn');
+      const navLinks = document.querySelector('.nav-links');
+      const navItems = document.querySelectorAll('.nav-links a');
+
+      mobileBtn.addEventListener('click', () => {
+        const isOpen = navLinks.classList.toggle('active');
+        mobileBtn.classList.toggle('active');
+        mobileBtn.setAttribute('aria-expanded', isOpen);
+      });
+
+      navItems.forEach(item => {
+        item.addEventListener('click', () => {
+          if (navLinks.classList.contains('active')) {
+            navLinks.classList.remove('active');
+            mobileBtn.classList.remove('active');
+            mobileBtn.setAttribute('aria-expanded', 'false');
+          }
+        });
+      });
+
+      // Mobile Collapsible Table of Contents
+      const tocToggleBtn = document.getElementById('toc-toggle');
+      const tocList = document.getElementById('toc-list');
+
+      if (tocToggleBtn && tocList) {
+        tocToggleBtn.addEventListener('click', () => {
+          tocList.classList.toggle('collapsed');
+          tocToggleBtn.textContent = tocList.classList.contains('collapsed') ? '►' : '▼';
+        });
+      }
+
+      // Intersection Observer for Active TOC Link Highlighting
+      const sections = document.querySelectorAll('.policy-section');
+      const tocLinks = document.querySelectorAll('.toc-list a');
+
+      const observerOptions = {
+        root: null,
+        rootMargin: '-80px 0px -60% 0px',
+        threshold: 0
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            tocLinks.forEach(link => {
+              if (link.getAttribute('href') === `#${id}`) {
+                link.classList.add('active');
+              } else {
+                link.classList.remove('active');
+              }
+            });
+          }
+        });
+      }, observerOptions);
+
+      sections.forEach(section => observer.observe(section));
+    });
+  </script>
+</body>
+</html>

@@ -42,7 +42,7 @@ export default config({
     kind: 'cloud',
   },
   cloud: {
-    project: 'DGL/DGL',
+    project: 'DGL/DGLS',
   },
 
   singletons: {

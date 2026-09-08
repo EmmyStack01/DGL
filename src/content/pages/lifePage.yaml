@@ -1,0 +1,46 @@
+post1:
+  title: Happy day
+  publishedDate: 2026-09-08
+  category: classroom
+  media:
+    discriminant: image
+    value: /assets/life/post1/media/value.jpg
+  description: 'Monday Question Researcher '
+post2:
+  title: Chess match day
+  publishedDate: 2026-09-08
+  category: classroom
+  media:
+    discriminant: image
+    value: /assets/life/post2/media/value.jpg
+post3:
+  publishedDate: 2026-09-07
+  category: classroom
+  media:
+    discriminant: image
+post4:
+  publishedDate: 2026-09-07
+  category: classroom
+  media:
+    discriminant: image
+post5:
+  publishedDate: 2026-09-07
+  category: classroom
+  media:
+    discriminant: image
+post6:
+  publishedDate: 2026-09-07
+  category: classroom
+  media:
+    discriminant: image
+post7:
+  publishedDate: 2026-09-07
+  category: classroom
+  media:
+    discriminant: video
+    value: {}
+post8:
+  publishedDate: 2026-09-07
+  category: classroom
+  media:
+    discriminant: image

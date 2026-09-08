@@ -105,10 +105,6 @@ export default config({
               defaultValue: 'creche',
             }),
             awardTitle: fields.text({ label: 'Award / Prize Won' }),
-            photo: fields.image({
-              directory: 'public/assets/pupils',
-              publicPath: '/assets/pupils/',
-            }),
           }),
           {
             label: 'Celebrating Our Pupils List',

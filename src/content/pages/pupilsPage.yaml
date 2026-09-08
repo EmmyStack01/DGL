@@ -1,0 +1,21 @@
+currentSession: 2026/2020
+awardsSession: 2025/2020
+classPhotos:
+  - classLevel: creche
+    photo: /assets/classes/classPhotos/0/photo.jpg
+    caption: Creche pupils
+  - classLevel: nursery-1
+    photo: /assets/classes/classPhotos/1/photo.jpg
+celebratedPupils:
+  - pupilName: Faith
+    classLevel: kg-1
+    awardTitle: Overall Best
+  - pupilName: Mike
+    classLevel: creche
+    awardTitle: Overall Best
+  - pupilName: Sam
+    classLevel: nursery-1
+    awardTitle: 1st Position
+  - pupilName: Mathew Anthony
+    classLevel: nursery-1
+    awardTitle: 3rd Position

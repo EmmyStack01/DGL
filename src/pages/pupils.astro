@@ -1,0 +1,1596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meet Our Pupils & Achievements | Dan-Gracious Land Nursery & Primary School</title>
+  <meta name="description" content="Discover class groups and celebrate student achievements at Dan-Gracious Land Nursery & Primary School in Idimu, Lagos." />
+  
+  <meta property="og:title" content="Dan-Gracious Land Pupils & Achievements" />
+  <meta property="og:description" content="Celebrating the bright minds and achievements of DGL pupils." />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800;900&family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png">
+  <link rel="manifest" href="/favicon_io/site.webmanifest">
+
+    <style>
+    /* -------------------------------------------------------------------------- */
+    /* 1. DESIGN SYSTEM — TOKENS SHARED WITH THE HOMEPAGE                        */
+    /* -------------------------------------------------------------------------- */
+    :root {
+      --color-navy: #0E2154;
+      --color-navy-deep: #081533;
+      --color-navy-soft: #1C3576;
+      --color-cream: #FFF9EC;
+      --color-cream-card: #FFFFFF;
+      --color-gold: #FFC72C;
+      --color-gold-deep: #F2A900;
+      --color-gold-light: #FFF1C2;
+      --color-orange: #F0640F;
+      --color-orange-hover: #D4530A;
+      --color-green: #2E9E4F;
+      --color-blue: #1F5FD1;
+      --color-purple: #6B3FA0;
+      --color-red: #C81E2C;
+      --color-text-dark: #101B3D;
+      --color-text-muted: #5B6280;
+      --color-white: #FFFFFF;
+      --color-surface-soft: #F4EFE0;
+      --color-border: #E7DFC8;
+
+      --font-display: 'Poppins', -apple-system, sans-serif;
+      --font-script: 'Caveat', cursive;
+      --font-body: 'Inter', -apple-system, sans-serif;
+
+      --radius-sm: 10px;
+      --radius-md: 18px;
+      --radius-lg: 28px;
+      --radius-full: 9999px;
+
+      --shadow-sm: 0 4px 10px -2px rgba(14, 33, 84, 0.10);
+      --shadow-md: 0 14px 28px -8px rgba(14, 33, 84, 0.18);
+      --shadow-lg: 0 30px 60px -16px rgba(14, 33, 84, 0.30);
+
+      --container-max: 1240px;
+      --header-height: 84px;
+    }
+
+    /* -------------------------------------------------------------------------- */
+    /* 2. RESET & BASE                                                           */
+    /* -------------------------------------------------------------------------- */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--color-cream);
+      color: var(--color-text-dark);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+    .container {
+      width: 100%;
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font-display);
+      font-weight: 800;
+      line-height: 1.15;
+      color: var(--color-navy);
+      letter-spacing: -0.01em;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      padding: 0.9rem 2.1rem;
+      font-weight: 800;
+      font-size: 1rem;
+      border-radius: var(--radius-full);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      text-align: center;
+      min-height: 52px;
+    }
+
+    .btn-primary {
+      background-color: var(--color-orange);
+      color: var(--color-white);
+      box-shadow: 0 10px 22px -6px rgba(240, 100, 15, 0.5);
+    }
+    .btn-primary:hover {
+      background-color: var(--color-orange-hover);
+      transform: translateY(-3px);
+      box-shadow: 0 14px 26px -6px rgba(240, 100, 15, 0.55);
+    }
+
+    .btn-secondary2 {
+      background-color: var(--color-white);
+      color: var(--color-navy);
+      box-shadow: 0 10px 20px -6px rgba(0,0,0,0.15);
+    }
+    .btn-secondary2:hover { transform: translateY(-3px); }
+
+    .btn-outline {
+      border: 2.5px solid var(--color-gold);
+      color: var(--color-navy);
+      background: var(--color-white);
+    }
+    .btn-outline:hover {
+      background-color: var(--color-gold);
+      color: var(--color-navy);
+      transform: translateY(-3px);
+    }
+
+    .btn-gold {
+      background-color: var(--color-gold);
+      color: var(--color-navy);
+      box-shadow: 0 10px 20px -6px rgba(255, 199, 44, 0.55);
+    }
+    .btn-gold:hover {
+      background-color: var(--color-gold-deep);
+      transform: translateY(-3px);
+    }
+
+    .btn-share {
+      background-color: rgba(255, 255, 255, 0.1);
+      color: var(--color-white);
+      border: 1.5px solid rgba(255, 255, 255, 0.3);
+      padding: 0.5rem 1rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      border-radius: var(--radius-full);
+      margin-top: 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: all 0.2s;
+      min-height: unset;
+    }
+
+    .btn-share:hover {
+      background-color: var(--color-gold);
+      color: var(--color-navy);
+      border-color: var(--color-gold);
+    }
+
+    /* Level-color ribbon strip — echoes the flyer's Creche/Nursery/Primary/Secondary bars */
+    .level-stripe { display: flex; height: 7px; width: 100%; }
+    .level-stripe span { flex: 1; }
+    .level-stripe .s-orange { background: var(--color-orange); }
+    .level-stripe .s-green { background: var(--color-green); }
+    .level-stripe .s-blue { background: var(--color-blue); }
+    .level-stripe .s-purple { background: var(--color-purple); }
+
+    /* -------------------------------------------------------------------------- */
+    /* 3. HEADER & NAVIGATION                                                    */
+    /* -------------------------------------------------------------------------- */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background-color: var(--color-navy);
+      height: var(--header-height);
+      display: flex;
+      align-items: center;
+      box-shadow: 0 6px 18px -8px rgba(8, 21, 51, 0.45);
+    }
+
+    .header .container { display: flex; align-items: center; justify-content: space-between; }
+
+    .brand { display: flex; align-items: center; gap: 0.85rem; }
+
+    .brand-badge { width: auto; height: 60px; display: flex; align-items: center; justify-content: center; }
+
+    .brand-title {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.05rem;
+      line-height: 1;
+      color: var(--color-white);
+      letter-spacing: 0.01em;
+    }
+
+    .brand-subtitle {
+      font-size: 0.72rem;
+      color: var(--color-gold-light);
+      font-weight: 600;
+      display: block;
+      margin-top: 3px;
+    }
+
+    .nav-links { display: flex; align-items: center; gap: 2.25rem; list-style: none; }
+    .nav-links a { font-weight: 700; font-size: 0.92rem; color: var(--color-white); transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--color-gold); }
+
+    .mobile-menu-btn { display: none; flex-direction: column; gap: 6px; padding: 0.5rem; }
+    .mobile-menu-btn span { width: 26px; height: 2.5px; background-color: var(--color-gold); border-radius: 4px; transition: all 0.3s ease; }
+
+    /* -------------------------------------------------------------------------- */
+    /* 4. BREADCRUMBS & HERO                                                     */
+    /* -------------------------------------------------------------------------- */
+    .breadcrumbs-bar { padding: 1.25rem 0 0.5rem 0; background: var(--color-cream); }
+
+    .breadcrumbs {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-text-muted);
+      list-style: none;
+    }
+
+    .breadcrumbs a { color: var(--color-navy); }
+    .breadcrumbs a:hover { color: var(--color-orange); }
+    .breadcrumbs li[aria-current] { color: var(--color-orange); font-weight: 800; }
+
+    .hero-pupils { position: relative; padding: 0 0 4rem 0; background: var(--color-cream); }
+
+    .hero-pupils-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      align-items: stretch;
+      min-height: 400px;
+    }
+
+    .hero-pupils-content {
+      background: var(--color-navy);
+      background-image:
+        radial-gradient(circle at 85% 15%, rgba(255, 199, 44, 0.12), transparent 55%),
+        linear-gradient(160deg, var(--color-navy) 0%, var(--color-navy-deep) 100%);
+      color: var(--color-white);
+      padding: 4rem 3.5rem 4rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      clip-path: polygon(0 0, 100% 0, 88% 100%, 0% 100%);
+    }
+
+    .hero-pupils-content > * { max-width: 560px; }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background-color: var(--color-gold);
+      color: var(--color-navy);
+      padding: 0.45rem 1.1rem;
+      border-radius: var(--radius-full);
+      font-size: 0.88rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      width: fit-content;
+    }
+
+    .hero-pupils-heading {
+      font-size: clamp(2.25rem, 4.5vw, 3.25rem);
+      margin-bottom: 1.1rem;
+      line-height: 1.12;
+      color: var(--color-white);
+      font-weight: 900;
+    }
+
+    .hero-pupils-subtext {
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.78);
+      max-width: 500px;
+    }
+
+    .hero-photo-box { position: relative; height: 100%; }
+
+    .hero-photo-placeholder {
+      height: 100%;
+      min-height: 340px;
+      background:
+        linear-gradient(180deg, rgba(14,33,84,0.04) 0%, rgba(14,33,84,0.28) 100%),
+        linear-gradient(180deg, #FFF1C2 0%, #F4EFE0 100%);
+      border-left: 7px solid var(--color-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-family: var(--font-display);
+      color: var(--color-navy);
+      text-align: center;
+      padding: 2rem;
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* -------------------------------------------------------------------------- */
+    /* 5. QUICK CLASS NAVIGATION                                                 */
+    /* -------------------------------------------------------------------------- */
+    .sticky-class-nav {
+      position: sticky;
+      top: var(--header-height);
+      z-index: 900;
+      background: var(--color-cream);
+      padding: 1.1rem 0;
+      border-bottom: 3px solid var(--color-gold);
+      margin-bottom: 3rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .quick-nav-title {
+      font-size: 0.85rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--color-navy);
+      margin-bottom: 0.75rem;
+    }
+
+    .class-scroll-row {
+      display: flex;
+      gap: 0.75rem;
+      overflow-x: auto;
+      padding-bottom: 0.5rem;
+      scrollbar-width: thin;
+    }
+
+    .class-scroll-row::-webkit-scrollbar { height: 4px; }
+    .class-scroll-row::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 4px; }
+
+    .class-nav-btn {
+      flex: 0 0 auto;
+      padding: 0.6rem 1.35rem;
+      background: var(--color-white);
+      border: 2px solid var(--color-border);
+      border-radius: var(--radius-full);
+      font-weight: 800;
+      font-size: 0.88rem;
+      color: var(--color-navy);
+      transition: all 0.2s;
+    }
+
+    .class-nav-btn:hover {
+      border-color: var(--color-gold);
+      background-color: var(--color-gold);
+      color: var(--color-navy);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* -------------------------------------------------------------------------- */
+    /* 6. CLASS SECTIONS — flyer-style colour bar cards                          */
+    /* -------------------------------------------------------------------------- */
+    .class-section {
+      scroll-margin-top: calc(var(--header-height) + 100px);
+      margin-bottom: 2.5rem;
+    }
+
+    .class-card-block {
+      background: var(--color-white);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      border-top: 6px solid var(--color-orange);
+      transition: box-shadow 0.3s ease;
+    }
+    .class-card-block:hover { box-shadow: var(--shadow-md); }
+
+    .class-section:nth-of-type(4n+1) .class-card-block { border-top-color: var(--color-orange); }
+    .class-section:nth-of-type(4n+2) .class-card-block { border-top-color: var(--color-green); }
+    .class-section:nth-of-type(4n+3) .class-card-block { border-top-color: var(--color-blue); }
+    .class-section:nth-of-type(4n+4) .class-card-block { border-top-color: var(--color-purple); }
+
+    .class-card-header {
+      padding: 1.5rem 2rem;
+      background: var(--color-surface-soft);
+      border-bottom: 1px solid var(--color-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .class-card-header h2 { font-size: 1.5rem; }
+
+    .class-card-header span {
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: var(--color-navy);
+      background: var(--color-gold-light);
+      padding: 0.4rem 0.9rem;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--color-gold);
+      white-space: nowrap;
+    }
+
+    .class-card-body { padding: 2rem; }
+
+    .class-group-photo-placeholder {
+      width: 100%;
+      height: 360px;
+      background: linear-gradient(160deg, #FFF1C2 0%, #F4EFE0 100%);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-navy);
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .class-privacy-note {
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+      margin-top: 1rem;
+      text-align: right;
+      font-weight: 600;
+    }
+
+    /* -------------------------------------------------------------------------- */
+    /* 7. CELEBRATING OUR PUPILS                                                 */
+    /* -------------------------------------------------------------------------- */
+    .achievements-wrapper {
+      background-color: var(--color-navy);
+      background-image: radial-gradient(circle at 90% 10%, rgba(255,199,44,0.10), transparent 55%);
+      color: var(--color-white);
+      padding: 4rem 0;
+      border-radius: var(--radius-lg);
+      margin-bottom: 5rem;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .achievements-intro {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 3rem auto;
+    }
+
+    .achievements-intro h2 { color: var(--color-white); font-size: 2.25rem; margin-bottom: 0.5rem; }
+    .achievements-intro p { color: rgba(255, 255, 255, 0.78); }
+
+    .session-badge {
+      display: inline-block;
+      margin-top: 1rem;
+      background: rgba(255, 199, 44, 0.12);
+      border: 1px solid rgba(255, 199, 44, 0.4);
+      color: var(--color-gold);
+      font-weight: 800;
+      font-size: 0.85rem;
+      padding: 0.35rem 0.9rem;
+      border-radius: var(--radius-full);
+    }
+
+    .achievements-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .digital-award-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-left: 5px solid var(--color-gold);
+      border-radius: var(--radius-md);
+      padding: 1.75rem;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      backdrop-filter: blur(4px);
+      transition: transform 0.2s, border-color 0.2s, box-shadow 0.3s ease;
+      scroll-margin-top: calc(var(--header-height) + 24px);
+    }
+
+    .digital-award-card:hover { transform: translateY(-4px); border-color: var(--color-gold); }
+
+    /* Momentary highlight when a card is opened directly from a shared link */
+    .digital-award-card.award-highlight {
+      border-color: var(--color-gold);
+      box-shadow: 0 0 0 3px rgba(255, 199, 44, 0.45), var(--shadow-lg);
+    }
+
+    /* Colour-code by award type — cycles every 6 cards (Overall, 1st, 2nd, 3rd, Maths, English) */
+    .digital-award-card:nth-child(6n+1) { border-left-color: var(--color-gold); }
+    .digital-award-card:nth-child(6n+2) { border-left-color: var(--color-orange); }
+    .digital-award-card:nth-child(6n+3) { border-left-color: var(--color-blue); }
+    .digital-award-card:nth-child(6n+4) { border-left-color: var(--color-purple); }
+    .digital-award-card:nth-child(6n+5) { border-left-color: var(--color-green); }
+    .digital-award-card:nth-child(6n+6) { border-left-color: var(--color-red); }
+
+    .award-type-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: var(--color-gold);
+      color: var(--color-navy);
+      font-size: 0.8rem;
+      font-weight: 800;
+      padding: 0.3rem 0.8rem;
+      border-radius: var(--radius-full);
+      width: fit-content;
+      margin-bottom: 1.25rem;
+    }
+
+    .awardee-name { font-size: 1.4rem; color: var(--color-white); margin-bottom: 0.25rem; }
+    .awardee-meta { font-size: 0.9rem; color: rgba(255, 255, 255, 0.65); }
+
+    .class-select-container { margin-top: 1.25rem; }
+
+    .class-select {
+      padding: 0.6rem 1.25rem;
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 700;
+      border-radius: var(--radius-full);
+      background-color: var(--color-navy-soft);
+      color: var(--color-white);
+      border: 1.5px solid rgba(255, 199, 44, 0.4);
+      outline: none;
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+
+    .class-select:focus, .class-select:hover { border-color: var(--color-gold); }
+
+    /* -------------------------------------------------------------------------- */
+    /* 8. PARENT CTA                                                             */
+    /* -------------------------------------------------------------------------- */
+    .parent-cta-box {
+      background: var(--color-orange);
+      background-image: radial-gradient(circle at 90% 10%, rgba(255,255,255,0.14), transparent 55%);
+      color: var(--color-white);
+      border-radius: var(--radius-lg);
+      padding: 3.5rem 2rem;
+      text-align: center;
+      margin-bottom: 5rem;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .parent-cta-box h2 { color: var(--color-white); font-size: clamp(1.75rem, 4vw, 2.25rem); margin-bottom: 0.5rem; }
+    .parent-cta-box p { font-size: 1.1rem; color: rgba(255, 255, 255, 0.92); margin-bottom: 1.75rem; max-width: 560px; margin-left: auto; margin-right: auto; }
+
+    /* -------------------------------------------------------------------------- */
+    /* 9. FOOTER — moved to src/components/Footer.astro                          */
+    /* -------------------------------------------------------------------------- */
+    .footer {
+      background-color: var(--color-navy-deep);
+      color: var(--color-white);
+      padding: 5rem 0 2.5rem 0;
+      border-top: 4px solid var(--color-gold);
+    }
+
+    .footer-grid { display: grid; grid-template-columns: 2fr repeat(3, 1fr); gap: 3rem; margin-bottom: 4rem; }
+
+    .footer-brand p { color: rgba(255, 255, 255, 0.7); margin-top: 1.25rem; font-size: 0.95rem; max-width: 320px; line-height: 1.6; }
+
+    .footer-column h4 { color: var(--color-gold); font-size: 1.02rem; margin-bottom: 1.5rem; font-weight: 800; }
+    .footer-column ul { list-style: none; }
+    .footer-column li { margin-bottom: 0.85rem; }
+    .footer-column a, .address { color: rgba(255, 255, 255, 0.75); font-size: 0.95rem; transition: color 0.2s; }
+    .footer-column a:hover { color: var(--color-gold); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      padding-top: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.25rem;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .footer-bottom-links { display: flex; align-items: center; gap: 1.5rem; }
+    .footer-bottom a { color: rgba(255, 255, 255, 0.75); transition: color 0.2s; }
+    .footer-bottom a:hover { color: var(--color-gold); }
+
+    /* -------------------------------------------------------------------------- */
+    /* 10. RESPONSIVE BREAKPOINTS                                                */
+    /* -------------------------------------------------------------------------- */
+    @media (max-width: 992px) {
+      .hero-pupils-grid { grid-template-columns: 1fr; min-height: unset; }
+      .hero-pupils-content { clip-path: none; padding: 3.25rem 1.5rem; }
+      .hero-pupils-content > * { max-width: 100%; }
+      .hero-photo-box { height: 300px; }
+      .hero-photo-placeholder { min-height: 300px; border-left: none; border-top: 6px solid var(--color-gold); }
+    }
+
+    @media (max-width: 900px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 850px) {
+      .nav-links, .header-cta { display: none; }
+      .mobile-menu-btn { display: flex; }
+
+      .nav-links.active {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: var(--header-height);
+        left: 0;
+        right: 0;
+        background-color: var(--color-navy);
+        padding: 1.75rem;
+        border-bottom: 3px solid var(--color-gold);
+        box-shadow: var(--shadow-md);
+        gap: 1.25rem;
+        z-index: 999;
+      }
+
+      .mobile-menu-btn.active span:nth-child(1) { transform: translateY(8.5px) rotate(45deg); }
+      .mobile-menu-btn.active span:nth-child(2) { opacity: 0; }
+      .mobile-menu-btn.active span:nth-child(3) { transform: translateY(-8.5px) rotate(-45deg); }
+
+      .container { padding: 0 1rem; }
+
+      .footer-bottom { flex-direction: column; text-align: center; gap: 1rem; }
+      .footer-bottom-links { flex-wrap: wrap; justify-content: center; gap: 1rem; }
+    }
+
+    @media (max-width: 680px) {
+      .footer-grid { grid-template-columns: 1fr; }
+      .class-group-photo-placeholder { height: 240px; }
+      .class-card-header { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="container">
+      <a href="/" class="brand">
+        <img src="/asset/DGLS-Badge-two-colour.svg" class="brand-badge" alt="DAN-GRACIOUS LAND Badge">
+        <div class="brand-text">
+          <span class="brand-title">DAN-GRACIOUS LAND</span>
+          <span class="brand-subtitle">Nursery & Primary School</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/pupils">Pupils</a></li>
+          <li><a href="/life">Life at DGL</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-cta">
+        <a href="/#contact" class="btn btn-gold">Enquire Now</a>
+      </div>
+
+      <button class="mobile-menu-btn" aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="level-stripe" aria-hidden="true">
+    <span class="s-orange"></span><span class="s-green"></span><span class="s-blue"></span><span class="s-purple"></span>
+  </div>
+
+  <main>
+    <div class="breadcrumbs-bar">
+      <div class="container">
+        <ul class="breadcrumbs">
+          <li><a href="/">Home</a></li>
+          <li>&#8250;</li>
+          <li aria-current="page">Pupils</li>
+        </ul>
+      </div>
+    </div>
+
+    <section class="hero-pupils">
+      <div class="hero-pupils-grid">
+        <div class="hero-pupils-content">
+          <div class="hero-pill">Our Pupils</div>
+          <h1 class="hero-pupils-heading">Meet the pupils of DGL</h1>
+          <p class="hero-pupils-subtext">From their first classroom experiences to their biggest achievements, we're proud to celebrate the children who make Dan-Gracious Land special.</p>
+        </div>
+        <div class="hero-photo-box">
+          <div class="hero-photo-placeholder">
+            [ Group Photo of DGL Pupils ]
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <nav class="sticky-class-nav" aria-label="Class navigation">
+      <div class="container">
+        <div class="quick-nav-title">Find your child's class</div>
+        <div class="class-scroll-row">
+          <a href="#creche" class="class-nav-btn">Creche</a>
+          <a href="#kg-1" class="class-nav-btn">KG 1</a>
+          <a href="#kg-2" class="class-nav-btn">KG 2</a>
+          <a href="#nursery-1" class="class-nav-btn">Nursery 1</a>
+          <a href="#nursery-2" class="class-nav-btn">Nursery 2</a>
+          <a href="#primary-1" class="class-nav-btn">Primary 1</a>
+          <a href="#primary-2" class="class-nav-btn">Primary 2</a>
+          <a href="#primary-3" class="class-nav-btn">Primary 3</a>
+          <a href="#primary-4" class="class-nav-btn">Primary 4</a>
+          <a href="#primary-5" class="class-nav-btn">Primary 5</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+
+      <section class="class-section" id="creche">
+        <div class="class-card-block">
+          <div class="class-card-header">
+            <div>
+              <h2>Creche</h2>
+              <p style="font-size: 0.9rem; color: var(--color-text-muted);">Meet the pupils of Creche.</p>
+            </div>
+            <span>2026/2027 Session</span>
+          </div>
+          <div class="class-card-body">
+            <div class="class-group-photo-placeholder">[ Creche Class Photo ]</div>
+            <p class="class-privacy-note">Photo published with parental consent.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="class-section" id="kg-1">
+        <div class="class-card-block">
+          <div class="class-card-header">
+            <div>
+              <h2>KG 1</h2>
+              <p style="font-size: 0.9rem; color: var(--color-text-muted);">Meet the pupils of KG 1.</p>
+            </div>
+            <span>2026/2027 Session</span>
+          </div>
+          <div class="class-card-body">
+            <div class="class-group-photo-placeholder">[ KG 1 Class Photo ]</div>
+            <p class="class-privacy-note">Photo published with parental consent.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="class-section" id="kg-2">
+        <div class="class-card-block">
+          <div class="class-card-header">
+            <div>
+              <h2>KG 2</h2>
+              <p style="font-size: 0.9rem; color: var(--color-text-muted);">Meet the pupils of KG 2.</p>
+            </div>
+            <span>2026/2027 Session</span>
+          </div>
+          <div class="class-card-body">
+            <div class="class-group-photo-placeholder">[ KG 2 Class Photo ]</div>
+            <p class="class-privacy-note">Photo published with parental consent.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="class-section" id="nursery-1">
+        <div class="class-card-block">
+          <div class="class-card-header">
+            <div>
+              <h2>Nursery 1</h2>
+              <p style="font-size: 0.9rem; color: var(--color-text-muted);">Meet the pupils of Nursery 1.</p>
+            </div>
+            <span>2026/2027 Session</span>
+          </div>
+          <div class="class-card-body">
+            <div class="class-group-photo-placeholder">[ Nursery 1 Class Photo ]</div>
+            <p class="class-privacy-note">Photo published with parental consent.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="class-section" id="nursery-2">
+        <div class="class-card-block">
+          <div class="class-card-header">
+            <div>
+              <h2>Nursery 2</h2>
+              <p style="font-size: 0.9rem; color: var(--color-text-muted);">Meet the pupils of Nursery 2.</p>
+            </div>
+            <span>2026/2027 Session</span>
+          </div>
+          <div class="class-card-body">
+            <div class="class-group-photo-placeholder">[ Nursery 2 Class Photo ]</div>
+            <p class="class-privacy-note">Photo published with parental consent.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="class-section" id="primary-1">
+        <div class="class-card-block">
+          <div class="class-card-header">
+            <div>
+              <h2>Primary 1</h2>
+              <p style="font-size: 0.9rem; color: var(--color-text-muted);">Meet the pupils of Primary 1.</p>
+            </div>
+            <span>2026/2027 Session</span>
+          </div>
+          <div class="class-card-body">
+            <div class="class-group-photo-placeholder">[ Primary 1 Class Photo ]</div>
+            <p class="class-privacy-note">Photo published with parental consent.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="class-section" id="primary-2">
+        <div class="class-card-block">
+          <div class="class-card-header">
+            <div>
+              <h2>Primary 2</h2>
+              <p style="font-size: 0.9rem; color: var(--color-text-muted);">Meet the pupils of Primary 2.</p>
+            </div>
+            <span>2026/2027 Session</span>
+          </div>
+          <div class="class-card-body">
+            <div class="class-group-photo-placeholder">[ Primary 2 Class Photo ]</div>
+            <p class="class-privacy-note">Photo published with parental consent.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="class-section" id="primary-3">
+        <div class="class-card-block">
+          <div class="class-card-header">
+            <div>
+              <h2>Primary 3</h2>
+              <p style="font-size: 0.9rem; color: var(--color-text-muted);">Meet the pupils of Primary 3.</p>
+            </div>
+            <span>2026/2027 Session</span>
+          </div>
+          <div class="class-card-body">
+            <div class="class-group-photo-placeholder">[ Primary 3 Class Photo ]</div>
+            <p class="class-privacy-note">Photo published with parental consent.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="class-section" id="primary-4">
+        <div class="class-card-block">
+          <div class="class-card-header">
+            <div>
+              <h2>Primary 4</h2>
+              <p style="font-size: 0.9rem; color: var(--color-text-muted);">Meet the pupils of Primary 4.</p>
+            </div>
+            <span>2026/2027 Session</span>
+          </div>
+          <div class="class-card-body">
+            <div class="class-group-photo-placeholder">[ Primary 4 Class Photo ]</div>
+            <p class="class-privacy-note">Photo published with parental consent.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="class-section" id="primary-5">
+        <div class="class-card-block">
+          <div class="class-card-header">
+            <div>
+              <h2>Primary 5</h2>
+              <p style="font-size: 0.9rem; color: var(--color-text-muted);">Meet the pupils of Primary 5.</p>
+            </div>
+            <span>2026/2027 Session</span>
+          </div>
+          <div class="class-card-body">
+            <div class="class-group-photo-placeholder">[ Primary 5 Class Photo ]</div>
+            <p class="class-privacy-note">Photo published with parental consent.</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <section class="achievements-wrapper" id="achievements">
+      <div class="container">
+        <div class="achievements-intro">
+          <h2>Celebrating Our Pupils ✨</h2>
+          <p>Every child has something worth celebrating. We proudly recognize our pupils for academic distinction and active participation.</p>
+          
+          <div class="class-select-container">
+            <select id="achievement-class-filter" class="class-select">
+              <option value="creche" selected>Creche</option>
+              <option value="kg-1">KG 1</option>
+              <option value="kg-2">KG 2</option>
+              <option value="nursery-1">Nursery 1</option>
+              <option value="nursery-2">Nursery 2</option>
+              <option value="primary-1">Primary 1</option>
+              <option value="primary-2">Primary 2</option>
+              <option value="primary-3">Primary 3</option>
+              <option value="primary-4">Primary 4</option>
+              <option value="primary-5">Primary 5</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="achievements-grid" id="achievements-grid">
+
+          <!-- ================= CRECHE ================= -->
+          <div class="digital-award-card" id="award-creche-overall" data-class="creche">
+            <div>
+              <span class="award-type-badge">🏆 Overall Best</span>
+              <h3 class="awardee-name">Pupil Name</h3>
+              <p class="awardee-meta">Creche · 2025/2026 Session</p>
+            </div>
+            <div><button class="btn-share" onclick="shareAchievement('Overall Best Pupil - Creche', 'award-creche-overall')"><span>📲 Share achievement</span></button></div>
+          </div>
+          <div class="digital-award-card" id="award-creche-1st" data-class="creche">
+            <div>
+              <span class="award-type-badge">🥇 1st Position</span>
+              <h3 class="awardee-name">Pupil Name</h3>
+              <p class="awardee-meta">Creche · 2025/2026 Session</p>
+            </div>
+            <div><button class="btn-share" onclick="shareAchievement('1st Position - Creche', 'award-creche-1st')"><span>📲 Share achievement</span></button></div>
+          </div>
+          <div class="digital-award-card" id="award-creche-2nd" data-class="creche">
+            <div>
+              <span class="award-type-badge">🥈 2nd Position</span>
+              <h3 class="awardee-name">Pupil Name</h3>
+              <p class="awardee-meta">Creche · 2025/2026 Session</p>
+            </div>
+            <div><button class="btn-share" onclick="shareAchievement('2nd Position - Creche', 'award-creche-2nd')"><span>📲 Share achievement</span></button></div>
+          </div>
+          <div class="digital-award-card" id="award-creche-3rd" data-class="creche">
+            <div>
+              <span class="award-type-badge">🥉 3rd Position</span>
+              <h3 class="awardee-name">Pupil Name</h3>
+              <p class="awardee-meta">Creche · 2025/2026 Session</p>
+            </div>
+            <div><button class="btn-share" onclick="shareAchievement('3rd Position - Creche', 'award-creche-3rd')"><span>📲 Share achievement</span></button></div>
+          </div>
+          <div class="digital-award-card" id="award-creche-maths" data-class="creche">
+            <div>
+              <span class="award-type-badge">⭐ Best in Mathematics</span>
+              <h3 class="awardee-name">Pupil Name</h3>
+              <p class="awardee-meta">Creche · 2025/2026 Session</p>
+            </div>
+            <div><button class="btn-share" onclick="shareAchievement('Best in Mathematics - Creche', 'award-creche-maths')"><span>📲 Share achievement</span></button></div>
+          </div>
+          <div class="digital-award-card" id="award-creche-english" data-class="creche">
+            <div>
+              <span class="award-type-badge">⭐ Best in English</span>
+              <h3 class="awardee-name">Pupil Name</h3>
+              <p class="awardee-meta">Creche · 2025/2026 Session</p>
+            </div>
+            <div><button class="btn-share" onclick="shareAchievement('Best in English - Creche', 'award-creche-english')"><span>📲 Share achievement</span></button></div>
+          </div>
+
+          <!-- ================= KG 1 ================= -->
+          <div class="digital-award-card" id="award-kg1-overall" data-class="kg-1">
+            <div>
+              <span class="award-type-badge">🏆 Overall Best</span>
+              <h3 class="awardee-name">Pupil Name</h3>
+              <p class="awardee-meta">KG 1 · 2025/2026 Session</p>
+            </div>
+            <div><button class="btn-share" onclick="shareAchievement('Overall Best Pupil - KG 1', 'award-kg1-overall')"><span>📲 Share achievement</span></button></div>
+          </div>
+          <div class="digital-award-card" id="award-kg1-1st" data-class="kg-1">
+            <div>
+              <span class="award-type-badge">🥇 1st Position</span>
+              <h3 class="awardee-name">Pupil Name</h3>
+              <p class="awardee-meta">KG 1 · 2025/2026 Session</p>
+            </div>
+            <div><button class="btn-share" onclick="shareAchievement('1st Position - KG 1', 'award-kg1-1st')"><span>📲 Share achievement</span></button></div>
+          </div>
+          <div class="digital-award-card" id="award-kg1-2nd" data-class="kg-1">
+            <div>
+              <span class="award-type-badge">🥈 2nd Position</span>
+              <h3 class="awardee-name">Pupil Name</h3>
+              <p class="awardee-meta">KG 1 · 2025/2026 Session</p>
+            </div>
+            <div><button class="btn-share" onclick="shareAchievement('2nd Position - KG 1', 'award-kg1-2nd')"><span>📲 Share achievement</span></button></div>
+          </div>
+          <div class="digital-award-card" id="award-kg1-3rd" data-class="kg-1">
+            <div>
+              <span class="award-type-badge">🥉 3rd Position</span>
+              <h3 class="awardee-name">Pupil Name</h3>
+              <p class="awardee-meta">KG 1 · 2025/2026 Session</p>
+            </div>
+            <div><button class="btn-share" onclick="shareAchievement('3rd Position - KG 1', 'award-kg1-3rd')"><span>📲 Share achievement</span></button></div>
+          </div>
+          <div class="digital-award-card" id="award-kg1-maths" data-class="kg-1">
+            <div>
+              <span class="award-type-badge">⭐ Best in Mathematics</span>
+              <h3 class="awardee-name">Pupil Name</h3>
+              <p class="awardee-meta">KG 1 · 2025/2026 Session</p>
+            </div>
+            <div><button class="btn-share" onclick="shareAchievement('Best in Mathematics - KG 1', 'award-kg1-maths')"><span>📲 Share achievement</span></button></div>
+          </div>
+          <div class="digital-award-card" id="award-kg1-english" data-class="kg-1">
+            <div>
+              <span class="award-type-badge">⭐ Best in English</span>
+              <h3 class="awardee-name">Pupil Name</h3>
+              <p class="awardee-meta">KG 1 · 2025/2026 Session</p>
+            </div>
+            <div><button class="btn-share" onclick="shareAchievement('Best in English - KG 1', 'award-kg1-english')"><span>📲 Share achievement</span></button></div>
+          </div>
+
+          <!-- ================= KG 2 ================= -->
+          <div class="digital-award-card" id="award-kg2-overall" data-class="kg-2">
+            <div>
+              <span class="award-type-badge">🏆 Overall Best</span>
+              <h3 class="awardee-name">Pupil Name</h3>
+              <p class="awardee-meta">KG 2 · 2025/2026 Session</p>
+            </div>
+            <div><button class="btn-share" onclick="shareAchievement('Overall Best Pupil - KG 2', 'award-kg2-overall')"><span>📲 Share achievement</span></button></div>
+          </div>
+          <div class="digital-award-card" id="award-kg2-1st" data-class="kg-2">
+            <div>
+              <span class="award-type-badge">🥇 1st Position</span>
+              <h3 class="awardee-name">Pupil Name</h3>
+              <p class="awardee-meta">KG 2 · 2025/2026 Session</p>
+            </div>
+            <div><button class="btn-share" onclick="shareAchievement('1st Position - KG 2', 'award-kg2-1st')"><span>📲 Share achievement</span></button></div>
+          </div>
+          <div class="digital-award-card" id="award-kg2-2nd" data-class="kg-2">
+            <div>
+              <span class="award-type-badge">🥈 2nd Position</span>
+              <h3 class="awardee-name">Pupil Name</h3>
+              <p class="awardee-meta">KG 2 · 2025/2026 Session</p>
+            </div>
+            <div><button class="btn-share" onclick="shareAchievement('2nd Position - KG 2', 'award-kg2-2nd')"><span>📲 Share achievement</span></button></div>
+          </div>
+          <div class="digital-award-card" id="award-kg2-3rd" data-class="kg-2">
+            <div>
+              <span class="award-type-badge">🥉 3rd Position</span>
+              <h3 class="awardee-name">Pupil Name</h3>
+              <p class="awardee-meta">KG 2 · 2025/2026 Session</p>
+            </div>
+            <div><button class="btn-share" onclick="shareAchievement('3rd Position - KG 2', 'award-kg2-3rd')"><span>📲 Share achievement</span></button></div>
+          </div>
+          <div class="digital-award-card" id="award-kg2-maths" data-class="kg-2">
+            <div>
+              <span class="award-type-badge">⭐ Best in Mathematics</span>
+              <h3 class="awardee-name">Pupil Name</h3>
+              <p class="awardee-meta">KG 2 · 2025/2026 Session</p>
+            </div>
+            <div><button class="btn-share" onclick="shareAchievement('Best in Mathematics - KG 2', 'award-kg2-maths')"><span>📲 Share achievement</span></button></div>
+          </div>
+          <div class="digital-award-card" id="award-kg2-english" data-class="kg-2">
+            <div>
+              <span class="award-type-badge">⭐ Best in English</span>
+              <h3 class="awardee-name">Pupil Name</h3>
+              <p class="awardee-meta">KG 2 · 2025/2026 Session</p>
+            </div>
+            <div><button class="btn-share" onclick="shareAchievement('Best in English - KG 2', 'award-kg2-english')"><span>📲 Share achievement</span></button></div>
+          </div>
+
+          <!-- ================= NURSERY 1 ================= -->
+          <div class="digital-award-card" id="award-nur1-overall" data-class="nursery-1">
+            <div>
+              <span class="award-type-badge">🏆 Overall Best</span>
+              <h3 class="awardee-name">Pupil Name</h3>
+              <p class="awardee-meta">Nursery 1 · 2025/2026 Session</p>
+            </div>
+            <div><button class="btn-share" onclick="shareAchievement('Overall Best Pupil - Nursery 1', 'award-nur1-overall')"><span>📲 Share achievement</span></button></div>
+          </div>
+          <div class="digital-award-card" id="award-nur1-1st" data-class="nursery-1">
+            <div>
+              <span class="award-type-badge">🥇 1st Position</span>
+              <h3 class="awardee-name">Pupil Name</h3>
+              <p class="awardee-meta">Nursery 1 · 2025/2026 Session</p>
+            </div>
+            <div><button class="btn-share" onclick="shareAchievement('1st Position - Nursery 1', 'award-nur1-1st')"><span>📲 Share achievement</span></button></div>
+          </div>
+          <div class="digital-award-card" id="award-nur1-2nd" data-class="nursery-1">
+            <div>
+              <span class="award-type-badge">🥈 2nd Position</span>
+              <h3 class="awardee-name">Pupil Name</h3>
+              <p class="awardee-meta">Nursery 1 · 2025/2026 Session</p>
+            </div>
+            <div><button class="btn-share" onclick="shareAchievement('2nd Position - Nursery 1', 'award-nur1-2nd')"><span>📲 Share achievement</span></button></div>
+          </div>
+          <div class="digital-award-card" id="award-nur1-3rd" data-class="nursery-1">
+            <div>
+              <span class="award-type-badge">🥉 3rd Position</span>
+              <h3 class="awardee-name">Pupil Name</h3>
+              <p class="awardee-meta">Nursery 1 · 2025/2026 Session</p>
+            </div>
+            <div><button class="btn-share" onclick="shareAchievement('3rd Position - Nursery 1', 'award-nur1-3rd')"><span>📲 Share achievement</span></button></div>
+          </div>
+          <div class="digital-award-card" id="award-nur1-maths" data-class="nursery-1">
+            <div>
+              <span class="award-type-badge">⭐ Best in Mathematics</span>
+              <h3 class="awardee-name">Pupil Name</h3>
+              <p class="awardee-meta">Nursery 1 · 2025/2026 Session</p>
+            </div>
+            <div><button class="btn-share" onclick="shareAchievement('Best in Mathematics - Nursery 1', 'award-nur1-maths')"><span>📲 Share achievement</span></button></div>
+          </div>
+          <div class="digital-award-card" id="award-nur1-english" data-class="nursery-1">
+            <div>
+              <span class="award-type-badge">⭐ Best in English</span>
+              <h3 class="awardee-name">Pupil Name</h3>
+              <p class="awardee-meta">Nursery 1 · 2025/2026 Session</p>
+            </div>
+            <div><button class="btn-share" onclick="shareAchievement('Best in English - Nursery 1', 'award-nur1-english')"><span>📲 Share achievement</span></button></div>
+          </div>
+
+          <!-- ================= NURSERY 2 ================= -->
+          <div class="digital-award-card" id="award-nur2-overall" data-class="nursery-2">
+            <div>
+              <span class="award-type-badge">🏆 Overall Best</span>
+              <h3 class="awardee-name">Pupil Name</h3>
+              <p class="awardee-meta">Nursery 2 · 2025/2026 Session</p>
+            </div>
+            <div><button class="btn-share" onclick="shareAchievement('Overall Best Pupil - Nursery 2', 'award-nur2-overall')"><span>📲 Share achievement</span></button></div>
+          </div>
+          <div class="digital-award-card" id="award-nur2-1st" data-class="nursery-2">
+            <div>
+              <span class="award-type-badge">🥇 1st Position</span>
+              <h3 class="awardee-name">Pupil Name</h3>
+              <p class="awardee-meta">Nursery 2 · 2025/2026 Session</p>
+            </div>
+            <div><button class="btn-share" onclick="shareAchievement('1st Position - Nursery 2', 'award-nur2-1st')"><span>📲 Share achievement</span></button></div>
+          </div>
+          <div class="digital-award-card" id="award-nur2-2nd" data-class="nursery-2">
+            <div>
+              <span class="award-type-badge">🥈 2nd Position</span>
+              <h3 class="awardee-name">Pupil Name</h3>
+              <p class="awardee-meta">Nursery 2 · 2025/2026 Session</p>
+            </div>
+            <div><button class="btn-share" onclick="shareAchievement('2nd Position - Nursery 2', 'award-nur2-2nd')"><span>📲 Share achievement</span></button></div>
+          </div>
+          <div class="digital-award-card" id="award-nur2-3rd" data-class="nursery-2">
+            <div>
+              <span class="award-type-badge">🥉 3rd Position</span>
+              <h3 class="awardee-name">Pupil Name</h3>
+              <p class="awardee-meta">Nursery 2 · 2025/2026 Session</p>
+            </div>
+            <div><button class="btn-share" onclick="shareAchievement('3rd Position - Nursery 2', 'award-nur2-3rd')"><span>📲 Share achievement</span></button></div>
+          </div>
+          <div class="digital-award-card" id="award-nur2-maths" data-class="nursery-2">
+            <div>
+              <span class="award-type-badge">⭐ Best in Mathematics</span>
+              <h3 class="awardee-name">Pupil Name</h3>
+              <p class="awardee-meta">Nursery 2 · 2025/2026 Session</p>
+            </div>
+            <div><button class="btn-share" onclick="shareAchievement('Best in Mathematics - Nursery 2', 'award-nur2-maths')"><span>📲 Share achievement</span></button></div>
+          </div>
+          <div class="digital-award-card" id="award-nur2-english" data-class="nursery-2">
+            <div>
+              <span class="award-type-badge">⭐ Best in English</span>
+              <h3 class="awardee-name">Pupil Name</h3>
+              <p class="awardee-meta">Nursery 2 · 2025/2026 Session</p>
+            </div>
+            <div><button class="btn-share" onclick="shareAchievement('Best in English - Nursery 2', 'award-nur2-english')"><span>📲 Share achievement</span></button></div>
+          </div>
+
+          <!-- ================= PRIMARY 1 ================= -->
+          <div class="digital-award-card" id="award-pri1-overall" data-class="primary-1">
+            <div>
+              <span class="award-type-badge">🏆 Overall Best</span>
+              <h3 class="awardee-name">Pupil Name</h3>
+              <p class="awardee-meta">Primary 1 · 2025/2026 Session</p>
+            </div>
+            <div><button class="btn-share" onclick="shareAchievement('Overall Best Pupil - Primary 1', 'award-pri1-overall')"><span>📲 Share achievement</span></button></div>
+          </div>
+          <div class="digital-award-card" id="award-pri1-1st" data-class="primary-1">
+            <div>
+              <span class="award-type-badge">🥇 1st Position</span>
+              <h3 class="awardee-name">Pupil Name</h3>
+              <p class="awardee-meta">Primary 1 · 2025/2026 Session</p>
+            </div>
+            <div><button class="btn-share" onclick="shareAchievement('1st Position - Primary 1', 'award-pri1-1st')"><span>📲 Share achievement</span></button></div>
+          </div>
+          <div class="digital-award-card" id="award-pri1-2nd" data-class="primary-1">
+            <div>
+              <span class="award-type-badge">🥈 2nd Position</span>
+              <h3 class="awardee-name">Pupil Name</h3>
+              <p class="awardee-meta">Primary 1 · 2025/2026 Session</p>
+            </div>
+            <div><button class="btn-share" onclick="shareAchievement('2nd Position - Primary 1', 'award-pri1-2nd')"><span>📲 Share achievement</span></button></div>
+          </div>
+          <div class="digital-award-card" id="award-pri1-3rd" data-class="primary-1">
+            <div>
+              <span class="award-type-badge">🥉 3rd Position</span>
+              <h3 class="awardee-name">Pupil Name</h3>
+              <p class="awardee-meta">Primary 1 · 2025/2026 Session</p>
+            </div>
+            <div><button class="btn-share" onclick="shareAchievement('3rd Position - Primary 1', 'award-pri1-3rd')"><span>📲 Share achievement</span></button></div>
+          </div>
+          <div class="digital-award-card" id="award-pri1-maths" data-class="primary-1">
+            <div>
+              <span class="award-type-badge">⭐ Best in Mathematics</span>
+              <h3 class="awardee-name">Pupil Name</h3>
+              <p class="awardee-meta">Primary 1 · 2025/2026 Session</p>
+            </div>
+            <div><button class="btn-share" onclick="shareAchievement('Best in Mathematics - Primary 1', 'award-pri1-maths')"><span>📲 Share achievement</span></button></div>
+          </div>
+          <div class="digital-award-card" id="award-pri1-english" data-class="primary-1">
+            <div>
+              <span class="award-type-badge">⭐ Best in English</span>
+              <h3 class="awardee-name">Pupil Name</h3>
+              <p class="awardee-meta">Primary 1 · 2025/2026 Session</p>
+            </div>
+            <div><button class="btn-share" onclick="shareAchievement('Best in English - Primary 1', 'award-pri1-english')"><span>📲 Share achievement</span></button></div>
+          </div>
+
+          <!-- ================= PRIMARY 2 ================= -->
+          <div class="digital-award-card" id="award-pri2-overall" data-class="primary-2">
+            <div>
+              <span class="award-type-badge">🏆 Overall Best</span>
+              <h3 class="awardee-name">Pupil Name</h3>
+              <p class="awardee-meta">Primary 2 · 2025/2026 Session</p>
+            </div>
+            <div><button class="btn-share" onclick="shareAchievement('Overall Best Pupil - Primary 2', 'award-pri2-overall')"><span>📲 Share achievement</span></button></div>
+          </div>
+          <div class="digital-award-card" id="award-pri2-1st" data-class="primary-2">
+            <div>
+              <span class="award-type-badge">🥇 1st Position</span>
+              <h3 class="awardee-name">Pupil Name</h3>
+              <p class="awardee-meta">Primary 2 · 2025/2026 Session</p>
+            </div>
+            <div><button class="btn-share" onclick="shareAchievement('1st Position - Primary 2', 'award-pri2-1st')"><span>📲 Share achievement</span></button></div>
+          </div>
+          <div class="digital-award-card" id="award-pri2-2nd" data-class="primary-2">
+            <div>
+              <span class="award-type-badge">🥈 2nd Position</span>
+              <h3 class="awardee-name">Pupil Name</h3>
+              <p class="awardee-meta">Primary 2 · 2025/2026 Session</p>
+            </div>
+            <div><button class="btn-share" onclick="shareAchievement('2nd Position - Primary 2', 'award-pri2-2nd')"><span>📲 Share achievement</span></button></div>
+          </div>
+          <div class="digital-award-card" id="award-pri2-3rd" data-class="primary-2">
+            <div>
+              <span class="award-type-badge">🥉 3rd Position</span>
+              <h3 class="awardee-name">Pupil Name</h3>
+              <p class="awardee-meta">Primary 2 · 2025/2026 Session</p>
+            </div>
+            <div><button class="btn-share" onclick="shareAchievement('3rd Position - Primary 2', 'award-pri2-3rd')"><span>📲 Share achievement</span></button></div>
+          </div>
+          <div class="digital-award-card" id="award-pri2-maths" data-class="primary-2">
+            <div>
+              <span class="award-type-badge">⭐ Best in Mathematics</span>
+              <h3 class="awardee-name">Pupil Name</h3>
+              <p class="awardee-meta">Primary 2 · 2025/2026 Session</p>
+            </div>
+            <div><button class="btn-share" onclick="shareAchievement('Best in Mathematics - Primary 2', 'award-pri2-maths')"><span>📲 Share achievement</span></button></div>
+          </div>
+          <div class="digital-award-card" id="award-pri2-english" data-class="primary-2">
+            <div>
+              <span class="award-type-badge">⭐ Best in English</span>
+              <h3 class="awardee-name">Pupil Name</h3>
+              <p class="awardee-meta">Primary 2 · 2025/2026 Session</p>
+            </div>
+            <div><button class="btn-share" onclick="shareAchievement('Best in English - Primary 2', 'award-pri2-english')"><span>📲 Share achievement</span></button></div>
+          </div>
+
+          <!-- ================= PRIMARY 3 ================= -->
+          <div class="digital-award-card" id="award-pri3-overall" data-class="primary-3">
+            <div>
+              <span class="award-type-badge">🏆 Overall Best</span>
+              <h3 class="awardee-name">Pupil Name</h3>
+              <p class="awardee-meta">Primary 3 · 2025/2026 Session</p>
+            </div>
+            <div><button class="btn-share" onclick="shareAchievement('Overall Best Pupil - Primary 3', 'award-pri3-overall')"><span>📲 Share achievement</span></button></div>
+          </div>
+          <div class="digital-award-card" id="award-pri3-1st" data-class="primary-3">
+            <div>
+              <span class="award-type-badge">🥇 1st Position</span>
+              <h3 class="awardee-name">Pupil Name</h3>
+              <p class="awardee-meta">Primary 3 · 2025/2026 Session</p>
+            </div>
+            <div><button class="btn-share" onclick="shareAchievement('1st Position - Primary 3', 'award-pri3-1st')"><span>📲 Share achievement</span></button></div>
+          </div>
+          <div class="digital-award-card" id="award-pri3-2nd" data-class="primary-3">
+            <div>
+              <span class="award-type-badge">🥈 2nd Position</span>
+              <h3 class="awardee-name">Pupil Name</h3>
+              <p class="awardee-meta">Primary 3 · 2025/2026 Session</p>
+            </div>
+            <div><button class="btn-share" onclick="shareAchievement('2nd Position - Primary 3', 'award-pri3-2nd')"><span>📲 Share achievement</span></button></div>
+          </div>
+          <div class="digital-award-card" id="award-pri3-3rd" data-class="primary-3">
+            <div>
+              <span class="award-type-badge">🥉 3rd Position</span>
+              <h3 class="awardee-name">Pupil Name</h3>
+              <p class="awardee-meta">Primary 3 · 2025/2026 Session</p>
+            </div>
+            <div><button class="btn-share" onclick="shareAchievement('3rd Position - Primary 3', 'award-pri3-3rd')"><span>📲 Share achievement</span></button></div>
+          </div>
+          <div class="digital-award-card" id="award-pri3-maths" data-class="primary-3">
+            <div>
+              <span class="award-type-badge">⭐ Best in Mathematics</span>
+              <h3 class="awardee-name">Pupil Name</h3>
+              <p class="awardee-meta">Primary 3 · 2025/2026 Session</p>
+            </div>
+            <div><button class="btn-share" onclick="shareAchievement('Best in Mathematics - Primary 3', 'award-pri3-maths')"><span>📲 Share achievement</span></button></div>
+          </div>
+          <div class="digital-award-card" id="award-pri3-english" data-class="primary-3">
+            <div>
+              <span class="award-type-badge">⭐ Best in English</span>
+              <h3 class="awardee-name">Pupil Name</h3>
+              <p class="awardee-meta">Primary 3 · 2025/2026 Session</p>
+            </div>
+            <div><button class="btn-share" onclick="shareAchievement('Best in English - Primary 3', 'award-pri3-english')"><span>📲 Share achievement</span></button></div>
+          </div>
+
+          <!-- ================= PRIMARY 4 ================= -->
+          <div class="digital-award-card" id="award-pri4-overall" data-class="primary-4">
+            <div>
+              <span class="award-type-badge">🏆 Overall Best</span>
+              <h3 class="awardee-name">Pupil Name</h3>
+              <p class="awardee-meta">Primary 4 · 2025/2026 Session</p>
+            </div>
+            <div><button class="btn-share" onclick="shareAchievement('Overall Best Pupil - Primary 4', 'award-pri4-overall')"><span>📲 Share achievement</span></button></div>
+          </div>
+          <div class="digital-award-card" id="award-pri4-1st" data-class="primary-4">
+            <div>
+              <span class="award-type-badge">🥇 1st Position</span>
+              <h3 class="awardee-name">Pupil Name</h3>
+              <p class="awardee-meta">Primary 4 · 2025/2026 Session</p>
+            </div>
+            <div><button class="btn-share" onclick="shareAchievement('1st Position - Primary 4', 'award-pri4-1st')"><span>📲 Share achievement</span></button></div>
+          </div>
+          <div class="digital-award-card" id="award-pri4-2nd" data-class="primary-4">
+            <div>
+              <span class="award-type-badge">🥈 2nd Position</span>
+              <h3 class="awardee-name">Pupil Name</h3>
+              <p class="awardee-meta">Primary 4 · 2025/2026 Session</p>
+            </div>
+            <div><button class="btn-share" onclick="shareAchievement('2nd Position - Primary 4', 'award-pri4-2nd')"><span>📲 Share achievement</span></button></div>
+          </div>
+          <div class="digital-award-card" id="award-pri4-3rd" data-class="primary-4">
+            <div>
+              <span class="award-type-badge">🥉 3rd Position</span>
+              <h3 class="awardee-name">Pupil Name</h3>
+              <p class="awardee-meta">Primary 4 · 2025/2026 Session</p>
+            </div>
+            <div><button class="btn-share" onclick="shareAchievement('3rd Position - Primary 4', 'award-pri4-3rd')"><span>📲 Share achievement</span></button></div>
+          </div>
+          <div class="digital-award-card" id="award-pri4-maths" data-class="primary-4">
+            <div>
+              <span class="award-type-badge">⭐ Best in Mathematics</span>
+              <h3 class="awardee-name">Pupil Name</h3>
+              <p class="awardee-meta">Primary 4 · 2025/2026 Session</p>
+            </div>
+            <div><button class="btn-share" onclick="shareAchievement('Best in Mathematics - Primary 4', 'award-pri4-maths')"><span>📲 Share achievement</span></button></div>
+          </div>
+          <div class="digital-award-card" id="award-pri4-english" data-class="primary-4">
+            <div>
+              <span class="award-type-badge">⭐ Best in English</span>
+              <h3 class="awardee-name">Pupil Name</h3>
+              <p class="awardee-meta">Primary 4 · 2025/2026 Session</p>
+            </div>
+            <div><button class="btn-share" onclick="shareAchievement('Best in English - Primary 4', 'award-pri4-english')"><span>📲 Share achievement</span></button></div>
+          </div>
+
+          <!-- ================= PRIMARY 5 ================= -->
+          <div class="digital-award-card" id="award-pri5-overall" data-class="primary-5">
+            <div>
+              <span class="award-type-badge">🏆 Overall Best</span>
+              <h3 class="awardee-name">Pupil Name</h3>
+              <p class="awardee-meta">Primary 5 · 2025/2026 Session</p>
+            </div>
+            <div><button class="btn-share" onclick="shareAchievement('Overall Best Pupil - Primary 5', 'award-pri5-overall')"><span>📲 Share achievement</span></button></div>
+          </div>
+          <div class="digital-award-card" id="award-pri5-1st" data-class="primary-5">
+            <div>
+              <span class="award-type-badge">🥇 1st Position</span>
+              <h3 class="awardee-name">Pupil Name</h3>
+              <p class="awardee-meta">Primary 5 · 2025/2026 Session</p>
+            </div>
+            <div><button class="btn-share" onclick="shareAchievement('1st Position - Primary 5', 'award-pri5-1st')"><span>📲 Share achievement</span></button></div>
+          </div>
+          <div class="digital-award-card" id="award-pri5-2nd" data-class="primary-5">
+            <div>
+              <span class="award-type-badge">🥈 2nd Position</span>
+              <h3 class="awardee-name">Pupil Name</h3>
+              <p class="awardee-meta">Primary 5 · 2025/2026 Session</p>
+            </div>
+            <div><button class="btn-share" onclick="shareAchievement('2nd Position - Primary 5', 'award-pri5-2nd')"><span>📲 Share achievement</span></button></div>
+          </div>
+          <div class="digital-award-card" id="award-pri5-3rd" data-class="primary-5">
+            <div>
+              <span class="award-type-badge">🥉 3rd Position</span>
+              <h3 class="awardee-name">Pupil Name</h3>
+              <p class="awardee-meta">Primary 5 · 2025/2026 Session</p>
+            </div>
+            <div><button class="btn-share" onclick="shareAchievement('3rd Position - Primary 5', 'award-pri5-3rd')"><span>📲 Share achievement</span></button></div>
+          </div>
+          <div class="digital-award-card" id="award-pri5-maths" data-class="primary-5">
+            <div>
+              <span class="award-type-badge">⭐ Best in Mathematics</span>
+              <h3 class="awardee-name">Pupil Name</h3>
+              <p class="awardee-meta">Primary 5 · 2025/2026 Session</p>
+            </div>
+            <div><button class="btn-share" onclick="shareAchievement('Best in Mathematics - Primary 5', 'award-pri5-maths')"><span>📲 Share achievement</span></button></div>
+          </div>
+          <div class="digital-award-card" id="award-pri5-english" data-class="primary-5">
+            <div>
+              <span class="award-type-badge">⭐ Best in English</span>
+              <h3 class="awardee-name">Pupil Name</h3>
+              <p class="awardee-meta">Primary 5 · 2025/2026 Session</p>
+            </div>
+            <div><button class="btn-share" onclick="shareAchievement('Best in English - Primary 5', 'award-pri5-english')"><span>📲 Share achievement</span></button></div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="container">
+      <div class="parent-cta-box">
+        <h2>Curious About a Day at DGL?</h2>
+        <p>Step inside our classrooms and playgrounds to see learning, laughter, and growth in action.</p>
+        <a href="/life" class="btn btn-secondary2">Explore DGL Life →</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="brand" style="color: var(--color-white);">
+            <img src="asset/DGLS-Badge-two-colour.svg" class="brand-badge" alt="DAN-GRACIOUS LAND Badge">
+            <div class="brand-text">
+              <span class="brand-title" style="color: var(--color-white);">DAN-GRACIOUS LAND</span>
+              <span class="brand-subtitle" style="color: rgba(255,255,255,0.7);">Nursery & Primary School</span>
+            </div>
+          </a>
+          <p>More than a school. A place to grow. Serving nursery and primary pupils in Idimu, Lagos State.</p>
+        </div>
+
+        <div class="footer-column">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/pupils">Pupils</a></li>
+            <li><a href="/life">Life at DGL</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>School</h4>
+          <ul>
+            <li><a href="/about">Our Philosophy</a></li>
+            <li><a href="/leadership">School Leadership</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="tel:+2340000000000">Phone Support</a></li>
+            <li><a href="https://wa.me/">WhatsApp Channel</a></li>
+            <li><a href="/#contact">27, Asunbe Street, Idimu</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© <span id="year"></span> Dan-Gracious Land Nursery & Primary School. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="/privacy-policy">Privacy Policy</a>
+          <div class="creator-credit">
+            Built by <a href="https://emmystack01.com/" target="_blank" rel="noopener" style="color: var(--color-gold); text-decoration: underline;">Emmy STACK01</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/asset/script/year.js" is:inline></script>
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Mobile Navigation Toggle
+      const mobileBtn = document.querySelector('.mobile-menu-btn');
+      const navLinks = document.querySelector('.nav-links');
+      const navItems = document.querySelectorAll('.nav-links a');
+
+      mobileBtn.addEventListener('click', () => {
+        const isOpen = navLinks.classList.toggle('active');
+        mobileBtn.classList.toggle('active');
+        mobileBtn.setAttribute('aria-expanded', isOpen);
+      });
+
+      navItems.forEach(item => {
+        item.addEventListener('click', () => {
+          if (navLinks.classList.contains('active')) {
+            navLinks.classList.remove('active');
+            mobileBtn.classList.remove('active');
+            mobileBtn.setAttribute('aria-expanded', 'false');
+          }
+        });
+      });
+    });
+
+    // Native Web Share API with Clipboard Fallback
+    function shareAchievement(awardTitle, sectionId) {
+      const shareUrl = `${window.location.origin}${window.location.pathname}#${sectionId}`;
+      const shareText = `See this pupil achievement at Dan-Gracious Land Nursery & Primary School: ${awardTitle}! 🎉`;
+
+      if (navigator.share) {
+        navigator.share({
+          title: 'DGL Pupil Achievement',
+          text: shareText,
+          url: shareUrl,
+        }).catch(() => {
+          // Fallback if user cancels
+        });
+      } else {
+        // Fallback for desktop browsers without Web Share API
+        navigator.clipboard.writeText(`${shareText} ${shareUrl}`).then(() => {
+          alert('Link copied to clipboard! You can now paste and share it on WhatsApp.');
+        });
+      }
+    }
+
+    // Filter Achievements by Class Dropdown
+    const classFilterSelect = document.getElementById('achievement-class-filter');
+    const awardCards = document.querySelectorAll('.digital-award-card');
+
+    function filterAchievements(selectedClass) {
+      awardCards.forEach(card => {
+        const cardClass = card.getAttribute('data-class');
+        if (cardClass === selectedClass) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Jump to a shared achievement link (e.g. pupils.html#award-pri1-1st).
+    // Every class except the default (Creche) is hidden via display:none on
+    // load, so the browser's native anchor-scroll can't reach a card from
+    // another class — this switches the filter to that card's class first,
+    // then scrolls to it and briefly highlights it.
+    function goToSharedAchievement() {
+      const hash = window.location.hash.replace('#', '');
+      if (!hash) return false;
+
+      const targetCard = document.getElementById(hash);
+      if (!targetCard || !targetCard.classList.contains('digital-award-card')) return false;
+
+      const targetClass = targetCard.getAttribute('data-class');
+
+      if (classFilterSelect) {
+        classFilterSelect.value = targetClass;
+      }
+      filterAchievements(targetClass);
+
+      // Wait a frame so the card is actually visible (display: flex) before
+      // asking the browser to scroll to it.
+      requestAnimationFrame(() => {
+        targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        targetCard.classList.add('award-highlight');
+        setTimeout(() => targetCard.classList.remove('award-highlight'), 2200);
+      });
+
+      return true;
+    }
+
+    if (classFilterSelect) {
+      // If the URL points to a specific achievement, show its class instead
+      // of always defaulting to Creche.
+      const jumpedToSharedAchievement = goToSharedAchievement();
+
+      if (!jumpedToSharedAchievement) {
+        // Default state on page load (Creche)
+        filterAchievements(classFilterSelect.value);
+      }
+
+      // Filter on dropdown change
+      classFilterSelect.addEventListener('change', (e) => {
+        filterAchievements(e.target.value);
+      });
+    }
+
+    // Keep working if the hash changes without a full page reload
+    window.addEventListener('hashchange', goToSharedAchievement);
+  </script>
+</body>
+</html>

@@ -14,10 +14,21 @@ post2:
     discriminant: image
     value: /assets/life/post2/media/value.jpg
 post3:
-  publishedDate: 2026-09-07
-  category: classroom
+  title: YouTube video
+  publishedDate: 2026-09-09
+  category: events
   media:
-    discriminant: image
+    discriminant: video
+    value:
+      url: >-
+        <iframe width="560" height="315"
+        src="https://www.youtube.com/embed/T3RdsE7oby4?si=Na-cPe31eEA1rDw_"
+        title="YouTube video player" frameborder="0" allow="accelerometer;
+        autoplay; clipboard-write; encrypted-media; gyroscope;
+        picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen></iframe>
+      thumbnail: /assets/life/post3/media/value/thumbnail.jpg
 post4:
   publishedDate: 2026-09-07
   category: classroom

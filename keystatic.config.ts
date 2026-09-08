@@ -119,7 +119,7 @@ export default config({
           }),
           {
             label: 'Celebrating Our Pupils List',
-            itemLabel: (props) => `${props.fields.pupilName.value} - ${props.fields.awardTitle.value}`,
+            itemLabel: (props) => `${props.fields.pupilName.value} - ${props.fields.classLevel.value} - ${props.fields.awardTitle.value}`,
           }
         ),
       },

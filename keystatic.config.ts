@@ -106,7 +106,6 @@ export default config({
             }),
             awardTitle: fields.text({ label: 'Award / Prize Won' }),
             photo: fields.image({
-              label: 'Pupil Photo',
               directory: 'public/assets/pupils',
               publicPath: '/assets/pupils/',
             }),

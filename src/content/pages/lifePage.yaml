@@ -15,10 +15,13 @@ post1:
         allowfullscreen></iframe>
       thumbnail: /assets/life/post1/media/value/thumbnail.jpg
 post2:
-  publishedDate: 2026-09-07
+  title: Hey there
+  publishedDate: 2026-09-08
   category: classroom
   media:
     discriminant: image
+    value: /assets/life/post2/media/value.jpg
+  description: Enjoy your life
 post3:
   publishedDate: 2026-09-07
   category: classroom

@@ -1,6 +1,9 @@
 currentSession: 2026/2027
 awardsSession: 2025/2026
-classPhotos: []
+classPhotos:
+  - classLevel: creche
+    photo: /assets/classes/classPhotos/0/photo.jpg
+    caption: Monday Question
 celebratedPupils:
   - pupilName: Frank Edward
     classLevel: kg-2

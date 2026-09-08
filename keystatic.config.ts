@@ -104,7 +104,18 @@ export default config({
               options: CLASS_LEVEL_OPTIONS,
               defaultValue: 'creche',
             }),
-            awardTitle: fields.text({ label: 'Award / Prize Won' }),
+            awardTitle: fields.select({
+              label: 'Award Title',
+              options: [
+                { label: 'Overall Best', value: 'Overall Best' },
+                { label: '1st Position', value: '1st Position' },
+                { label: '2nd Position', value: '2nd Position' },
+                { label: '3rd Position', value: '3rd Position' },
+                { label: 'Best in Mathematics', value: 'Best in Mathematics' },
+                { label: 'Best in English', value: 'Best in English' },
+              ],
+              defaultValue: 'Overall Best',
+            }),
           }),
           {
             label: 'Celebrating Our Pupils List',

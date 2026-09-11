@@ -1,0 +1,1481 @@
+---
+// Prerendered: this page's Keystatic reads use Node's local filesystem
+// (createReader → fs), which only exists during `astro build`. Cloudflare
+// Workers have no filesystem at request time, so without this flag every
+// visit would try to re-read from disk on the live worker and 500.
+export const prerender = true;
+
+import { createReader } from '@keystatic/core/reader';
+import keystaticConfig, { LIFE_CATEGORY_OPTIONS, MAX_LIFE_POSTS } from '../../keystatic.config';
+
+const reader = createReader(process.cwd(), keystaticConfig);
+const siteSettings = await reader.singletons.siteSettings.read();
+const lifePageData = await reader.singletons.lifePage.read();
+
+// siteSettings is null until someone opens /keystatic and saves the
+// "Site Settings & Footer" singleton at least once — the config's
+// defaultValue is only a form default in the admin UI, it doesn't create
+// a content file by itself. Fall back so a fresh/empty CMS never breaks
+// the build; once it's saved for real, these fallbacks are simply unused.
+const phoneSupport = siteSettings?.phoneSupport ?? '+2348000000000';
+const whatsAppChannelLink = siteSettings?.whatsAppChannelLink ?? 'https://wa.me/';
+
+// Same slot-flattening, filtering, and shaping logic as life.astro's full
+// list — kept in sync deliberately, just sliced down to 3 here since the
+// homepage only ever teases the most recent moments.
+const CATEGORY_LABELS = Object.fromEntries(LIFE_CATEGORY_OPTIONS.map((c) => [c.value, c.label]));
+const TONE_CYCLE = ['', 'tone-green', 'tone-blue', 'tone-purple'];
+
+function formatMonthYear(dateStr) {
+  if (!dateStr) return '';
+  const d = new Date(dateStr);
+  if (Number.isNaN(d.getTime())) return '';
+  return d.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+}
+
+// Kept in sync with life.astro's toEmbedVideoUrl — this page was
+// previously passing the raw pasted value straight through with no
+// conversion at all, which is why a normal youtube.com/watch link (or a
+// full <iframe> snippet pasted from YouTube's "Share > Embed" button)
+// never actually played here even after life.astro was fixed.
+function toEmbedVideoUrl(rawUrl) {
+  if (!rawUrl) return null;
+  let candidate = rawUrl.trim();
+  const iframeSrcMatch = candidate.match(/<iframe\b[^>]*\bsrc\s*=\s*["']([^"']+)["']/i);
+  if (iframeSrcMatch) {
+    candidate = iframeSrcMatch[1];
+  }
+  let u;
+  try {
+    u = new URL(candidate);
+  } catch {
+    try {
+      u = new URL(`https://${candidate}`);
+    } catch {
+      return null;
+    }
+  }
+  const host = u.hostname.replace(/^www\./, '').replace(/^m\./, '');
+
+  if (host === 'youtu.be') {
+    const id = u.pathname.slice(1).split('/')[0];
+    return id ? `https://www.youtube.com/embed/${id}` : null;
+  }
+  if (host === 'youtube.com') {
+    if (u.pathname === '/watch') {
+      const id = u.searchParams.get('v');
+      return id ? `https://www.youtube.com/embed/${id}` : null;
+    }
+    if (u.pathname.startsWith('/shorts/')) {
+      const id = u.pathname.split('/')[2];
+      return id ? `https://www.youtube.com/embed/${id}` : null;
+    }
+    if (u.pathname.startsWith('/embed/')) {
+      return u.toString();
+    }
+  }
+  if (host === 'vimeo.com') {
+    const id = u.pathname.split('/').filter(Boolean)[0];
+    return id ? `https://player.vimeo.com/video/${id}` : null;
+  }
+  return u.protocol === 'http:' || u.protocol === 'https:' ? u.toString() : null;
+}
+
+const allSlots = Array.from({ length: MAX_LIFE_POSTS }, (_, i) => {
+  const raw = lifePageData?.[`post${i + 1}`];
+  return raw ? { ...raw, slug: `post-${i + 1}` } : null;
+}).filter(Boolean);
+
+const recentPosts = allSlots
+  .filter((p) => p.title && p.title.trim() !== '')
+  .sort((a, b) => new Date(b.publishedDate).getTime() - new Date(a.publishedDate).getTime())
+  .slice(0, 3)
+  .map((p) => {
+    const isVideo = p.media?.discriminant === 'video';
+    // Image posts: media.value is the image path string directly.
+    // Video posts: media.value is { url, thumbnail } — thumbnail optional,
+    // falls back to the decorative icon if missing.
+    const imageUrl = isVideo ? (p.media?.value?.thumbnail || null) : (p.media?.value || null);
+    const videoUrl = isVideo ? toEmbedVideoUrl(p.media?.value?.url || null) : null;
+    return {
+      slug: p.slug,
+      title: p.title,
+      category: p.category,
+      categoryLabel: CATEGORY_LABELS[p.category] ?? p.category,
+      dateLabel: formatMonthYear(p.publishedDate),
+      description: p.description || '',
+      isVideo,
+      imageUrl,
+      videoUrl,
+    };
+  });
+
+// Data handed to the client-side script as inert JSON (not executed code),
+// so the modal-opening script below can stay a plain classic `is:inline`
+// script — required so its onclick-referenced functions remain globally
+// callable — while still getting real, CMS-sourced content into the modal.
+const clientPosts = Object.fromEntries(
+  recentPosts.map((p) => [
+    p.slug,
+    {
+      title: p.title,
+      meta: `${p.categoryLabel} · ${p.dateLabel}`,
+      text: p.description,
+      imageUrl: p.imageUrl,
+      videoUrl: p.videoUrl,
+    },
+  ])
+);
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dan-Gracious Land Nursery & Primary School | Idimu, Lagos</title>
+  <meta name="description" content="A warm, supportive nursery and primary school in Idimu, Lagos where children learn, participate, grow, and shine with confidence." />
+
+  <meta property="og:title" content="Dan-Gracious Land Nursery & Primary School" />
+  <meta property="og:description" content="Where little learners grow, shine & become more. Located in Idimu, Lagos." />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800;900&family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png">
+  <link rel="manifest" href="/favicon_io/site.webmanifest">
+  <style>
+    /* -------------------------------------------------------------------------- */
+    /* 1. DESIGN SYSTEM — TOKENS PULLED FROM THE ADMISSIONS FLYER                */
+    /* -------------------------------------------------------------------------- */
+    :root {
+      /* Flyer brand palette */
+      --color-navy: #0E2154;
+      --color-navy-deep: #081533;
+      --color-navy-soft: #1C3576;
+      --color-cream: #FFF9EC;
+      --color-cream-card: #FFFFFF;
+      --color-gold: #FFC72C;
+      --color-gold-deep: #F2A900;
+      --color-gold-light: #FFF1C2;
+      --color-orange: #F0640F;
+      --color-orange-hover: #D4530A;
+      --color-green: #2E9E4F;
+      --color-blue: #1F5FD1;
+      --color-purple: #6B3FA0;
+      --color-red: #C81E2C;
+      --color-text-dark: #101B3D;
+      --color-text-muted: #5B6280;
+      --color-white: #FFFFFF;
+      --color-surface-soft: #F4EFE0;
+      --color-border: #E7DFC8;
+
+      /* Typography — bold poster display + warm script accent + clean body */
+      --font-display: 'Poppins', -apple-system, sans-serif;
+      --font-script: 'Caveat', cursive;
+      --font-body: 'Inter', -apple-system, sans-serif;
+
+      /* Elevation & shapes */
+      --radius-sm: 10px;
+      --radius-md: 18px;
+      --radius-lg: 28px;
+      --radius-full: 9999px;
+
+      --shadow-sm: 0 4px 10px -2px rgba(14, 33, 84, 0.10);
+      --shadow-md: 0 14px 28px -8px rgba(14, 33, 84, 0.18);
+      --shadow-lg: 0 30px 60px -16px rgba(14, 33, 84, 0.30);
+
+      --glass-bg: rgba(14, 33, 84, 0.97);
+      --glass-border: rgba(255, 199, 44, 0.25);
+
+      --container-max: 1240px;
+      --header-height: 84px;
+    }
+
+    /* -------------------------------------------------------------------------- */
+    /* 2. RESET & BASE                                                           */
+    /* -------------------------------------------------------------------------- */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--color-cream);
+      color: var(--color-text-dark);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+    .container {
+      width: 100%;
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* -------------------------------------------------------------------------- */
+    /* 3. TYPOGRAPHY & BUTTONS                                                    */
+    /* -------------------------------------------------------------------------- */
+    h1, h2, h3, h4 {
+      font-family: var(--font-display);
+      font-weight: 800;
+      line-height: 1.15;
+      color: var(--color-navy);
+      letter-spacing: -0.01em;
+    }
+
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1.15rem;
+      background: var(--color-orange);
+      color: var(--color-white);
+      font-weight: 800;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      border-radius: var(--radius-full);
+      margin-bottom: 1rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .section-tag.tag-blue { background: var(--color-blue); }
+    .section-tag.tag-purple { background: var(--color-purple); }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      color: var(--color-navy);
+      font-weight: 900;
+    }
+
+    .section-desc {
+      font-size: 1.1rem;
+      color: var(--color-text-muted);
+      max-width: 580px;
+      margin-top: 0.75rem;
+      line-height: 1.6;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      padding: 0.9rem 2.1rem;
+      font-weight: 800;
+      font-size: 1rem;
+      border-radius: var(--radius-full);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      text-align: center;
+      min-height: 52px;
+    }
+
+    .btn-primary {
+      background-color: var(--color-orange);
+      color: var(--color-white);
+      box-shadow: 0 10px 22px -6px rgba(240, 100, 15, 0.5);
+    }
+    .btn-primary:hover {
+      background-color: var(--color-orange-hover);
+      transform: translateY(-3px);
+      box-shadow: 0 14px 26px -6px rgba(240, 100, 15, 0.55);
+    }
+
+    .btn-secondary {
+      background-color: var(--color-navy);
+      color: var(--color-white);
+      box-shadow: 0 10px 20px -5px rgba(10, 15, 29, 0.3);
+    }
+    .btn-secondary:hover {
+      background-color: var(--color-navy-soft);
+      transform: translateY(-3px);
+      box-shadow: 0 14px 24px -4px rgba(10, 15, 29, 0.4);
+    }
+
+    .btn-outline {
+      border: 2.5px solid var(--color-gold);
+      color: var(--color-navy);
+      background: var(--color-white);
+    }
+    .btn-outline:hover {
+      background-color: var(--color-gold);
+      color: var(--color-navy);
+      transform: translateY(-3px);
+    }
+
+    .btn-gold {
+      background-color: var(--color-gold);
+      color: var(--color-navy);
+      box-shadow: 0 10px 20px -6px rgba(255, 199, 44, 0.55);
+    }
+    .btn-gold:hover {
+      background-color: var(--color-gold-deep);
+      transform: translateY(-3px);
+    }
+
+    /* Level-color ribbon strip — echoes the flyer's Creche/Nursery/Primary/Secondary bars */
+    .level-stripe {
+      display: flex;
+      height: 7px;
+      width: 100%;
+    }
+    .level-stripe span { flex: 1; }
+    .level-stripe .s-orange { background: var(--color-orange); }
+    .level-stripe .s-green { background: var(--color-green); }
+    .level-stripe .s-blue { background: var(--color-blue); }
+    .level-stripe .s-purple { background: var(--color-purple); }
+
+    /* -------------------------------------------------------------------------- */
+    /* 4. HEADER & NAVIGATION                                                     */
+    /* -------------------------------------------------------------------------- */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background-color: var(--color-navy);
+      height: var(--header-height);
+      display: flex;
+      align-items: center;
+      box-shadow: 0 6px 18px -8px rgba(8, 21, 51, 0.45);
+    }
+
+    .header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand { display: flex; align-items: center; gap: 0.85rem; }
+
+    .brand-badge {
+      width: auto;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .brand-title {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.05rem;
+      line-height: 1;
+      color: var(--color-white);
+      letter-spacing: 0.01em;
+    }
+
+    .brand-subtitle {
+      font-size: 0.72rem;
+      color: var(--color-gold-light);
+      font-weight: 600;
+      display: block;
+      margin-top: 3px;
+    }
+
+    .nav-links { display: flex; align-items: center; gap: 2.25rem; list-style: none; }
+
+    .nav-links a {
+      font-weight: 700;
+      font-size: 0.92rem;
+      color: var(--color-white);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--color-gold); }
+
+    .mobile-menu-btn { display: none; flex-direction: column; gap: 6px; padding: 0.5rem; }
+    .mobile-menu-btn span { width: 26px; height: 2.5px; background-color: var(--color-gold); border-radius: 4px; }
+
+    /* -------------------------------------------------------------------------- */
+    /* 5. HERO — angled admissions panel + building-photo frame                  */
+    /* -------------------------------------------------------------------------- */
+    .hero { position: relative; padding: 0 0 6rem 0; background: var(--color-cream); }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: stretch;
+      min-height: 560px;
+    }
+
+    .hero-content {
+      background: var(--color-navy);
+      background-image:
+        radial-gradient(circle at 85% 15%, rgba(255, 199, 44, 0.12), transparent 55%),
+        linear-gradient(160deg, var(--color-navy) 0%, var(--color-navy-deep) 100%);
+      color: var(--color-white);
+      padding: 4.5rem 3.5rem 4.5rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      clip-path: polygon(0 0, 100% 0, 88% 100%, 0% 100%);
+      position: relative;
+    }
+
+    .hero-content > * { max-width: 560px; }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background-color: var(--color-gold);
+      color: var(--color-navy);
+      padding: 0.45rem 1.1rem;
+      border-radius: var(--radius-full);
+      font-size: 0.88rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      width: fit-content;
+    }
+
+    .hero-heading {
+      font-size: clamp(2.5rem, 4.6vw, 3.6rem);
+      margin-bottom: 1.4rem;
+      line-height: 1.1;
+      color: var(--color-white);
+      font-weight: 900;
+    }
+
+    .hero-heading span {
+      color: var(--color-gold);
+      position: relative;
+      display: inline-block;
+    }
+
+    .hero-subtext {
+      font-size: 1.15rem;
+      color: rgba(255, 255, 255, 0.78);
+      margin-bottom: 2.25rem;
+      max-width: 500px;
+    }
+
+    .hero-actions { display: flex; gap: 1.1rem; flex-wrap: wrap; }
+
+    .hero-media {
+      position: relative;
+      height: 100%;
+    }
+
+    .hero-image-frame {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      min-height: 420px;
+      overflow: hidden;
+    }
+
+    .hero-img-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 62% 45%;
+      display: block;
+      border-left: 7px solid var(--color-gold);
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* Circular badge — the flyer's signature gold "Enroll Now" medallion, repurposed */
+    .hero-badge-decoration {
+      position: absolute;
+      left: 2rem;
+      bottom: 2rem;
+      width: 158px;
+      height: 158px;
+      border-radius: 50%;
+      background: var(--color-navy);
+      border: 5px solid var(--color-gold);
+      box-shadow: var(--shadow-lg), 0 0 0 6px rgba(255,255,255,0.9);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      z-index: 5;
+      padding: 0.5rem;
+    }
+
+    .hero-badge-decoration .badge-star { color: var(--color-gold); font-size: 1rem; letter-spacing: 3px; margin-bottom: 2px; }
+
+    .hero-badge-decoration strong {
+      display: block;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 0.95rem;
+      color: var(--color-white);
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+
+    .hero-badge-decoration span.script {
+      font-family: var(--font-script);
+      font-weight: 700;
+      font-size: 1.6rem;
+      color: var(--color-gold);
+      line-height: 1;
+      margin-top: 2px;
+    }
+
+    /* -------------------------------------------------------------------------- */
+    /* 6. QUICK ACTIONS — flyer-style colour bars                                */
+    /* -------------------------------------------------------------------------- */
+    .quick-actions { padding: 3.5rem 0 5rem 0; }
+
+    .actions-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+
+    .action-card {
+      background: var(--color-cream-card);
+      padding: 2.25rem;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      align-items: flex-start;
+      gap: 1.5rem;
+      position: relative;
+      overflow: hidden;
+      border-left: 8px solid var(--color-orange);
+    }
+
+    .action-card.card-blue { border-left-color: var(--color-blue); }
+
+    .action-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .action-icon {
+      font-size: 2rem;
+      width: 62px;
+      height: 62px;
+      background: var(--color-navy);
+      color: var(--color-gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .action-body h3 { font-size: 1.35rem; margin-bottom: 0.35rem; }
+    .action-body p { font-size: 0.95rem; color: var(--color-text-muted); margin-bottom: 1.25rem; }
+
+    .action-link {
+      font-weight: 800;
+      font-size: 0.95rem;
+      color: var(--color-orange);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: gap 0.2s;
+    }
+    .action-card.card-blue .action-link { color: var(--color-blue); }
+    .action-card:hover .action-link { gap: 0.6rem; }
+
+    /* -------------------------------------------------------------------------- */
+    /* 7. PUPILS ARE THE HEART — navy card + 4-photo strip like the flyer footer  */
+    /* -------------------------------------------------------------------------- */
+    .heart-section { padding: 2rem 0; margin-bottom: 5rem; }
+
+    .heart-card-wrapper {
+      background: var(--color-white);
+      border-radius: var(--radius-lg);
+      padding: 3.5rem;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--color-border);
+    }
+
+    .heart-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 3.5rem; align-items: center; }
+
+    .heart-media { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.1rem; }
+
+    .media-box {
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .media-box:hover { transform: translateY(-5px); }
+
+    .media-photo {
+      height: 118px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.75rem;
+    }
+
+    .media-box:nth-child(1) .media-photo { background: linear-gradient(150deg, #FFD98A, var(--color-orange)); }
+    .media-box:nth-child(2) .media-photo { background: linear-gradient(150deg, #9BE6B0, var(--color-green)); }
+    .media-box:nth-child(3) .media-photo { background: linear-gradient(150deg, #A9C4FF, var(--color-blue)); }
+    .media-box:nth-child(4) .media-photo { background: linear-gradient(150deg, #D3B6F2, var(--color-purple)); }
+
+    .media-label {
+      background: var(--color-navy);
+      color: var(--color-white);
+      text-align: center;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.72rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 0.55rem 0.5rem;
+    }
+
+    /* -------------------------------------------------------------------------- */
+    /* 8. LIFE AT DGL                                                             */
+    /* -------------------------------------------------------------------------- */
+    .life-section { margin-bottom: 6rem; }
+
+    .life-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; }
+
+    .life-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.75rem; }
+
+    /* Post-card component — matches the journal-card template on life.html exactly */
+    .journal-card {
+      background: var(--color-cream-card);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+      cursor: pointer;
+      border-top: 6px solid var(--color-orange);
+    }
+
+    .journal-card.tone-green { border-top-color: var(--color-green); }
+    .journal-card.tone-blue { border-top-color: var(--color-blue); }
+    .journal-card.tone-purple { border-top-color: var(--color-purple); }
+
+    .journal-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+
+    .card-media {
+      position: relative;
+      background: linear-gradient(160deg, #FFF1C2 0%, #F4EFE0 100%);
+      height: 210px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card-media img { width: 100%; height: 100%; object-fit: cover; }
+    .card-media .placeholder-icon { font-size: 2.5rem; }
+
+    .video-indicator {
+      position: absolute;
+      width: 52px;
+      height: 52px;
+      background: var(--color-navy);
+      border: 3px solid var(--color-white);
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-gold);
+      font-size: 1.2rem;
+      box-shadow: var(--shadow-md);
+    }
+
+    .card-body {
+      padding: 1.5rem 1.6rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .card-meta-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.6rem;
+    }
+
+    .card-category {
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--color-orange);
+    }
+
+    .journal-card.tone-green .card-category { color: var(--color-green); }
+    .journal-card.tone-blue .card-category { color: var(--color-blue); }
+    .journal-card.tone-purple .card-category { color: var(--color-purple); }
+
+    .card-date { font-size: 0.75rem; color: var(--color-text-muted); }
+
+    .card-title { font-size: 1.2rem; margin-bottom: 0.4rem; }
+
+    .card-footer {
+      margin-top: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 0.9rem;
+      border-top: 1px solid var(--color-surface-soft);
+    }
+
+    .card-action-text {
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: var(--color-orange);
+    }
+
+    .journal-card.tone-green .card-action-text { color: var(--color-green); }
+    .journal-card.tone-blue .card-action-text { color: var(--color-blue); }
+    .journal-card.tone-purple .card-action-text { color: var(--color-purple); }
+
+    .btn-share {
+      background-color: var(--color-cream-card);
+      color: var(--color-navy);
+      border: 1.5px solid var(--color-border);
+      padding: 0.5rem 1rem;
+      font-size: 0.82rem;
+      border-radius: var(--radius-full);
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all 0.2s ease;
+    }
+    .btn-share:hover {
+      background-color: var(--color-gold);
+      border-color: var(--color-gold);
+      transform: translateY(-2px);
+    }
+
+    /* -------------------------------------------------------------------------- */
+    /* 8b. POST MODAL / DETAIL VIEW — matches life.html exactly                   */
+    /* -------------------------------------------------------------------------- */
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(8, 21, 51, 0.78);
+      backdrop-filter: blur(4px);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.25s ease;
+    }
+
+    .modal-overlay.open { opacity: 1; visibility: visible; }
+
+    .modal-container {
+      /* No card anymore — this just centers and hugs the media itself.
+         sizeModalToMedia() (in the script below) sets an explicit inline
+         width here matching the actual photo/video's own proportions, so
+         the viewer hugs the media's real shape instead of a fixed frame.
+         overflow stays visible (not auto/scroll) because the height caps
+         below are chosen so the media + caption always fit on screen —
+         nothing in here should ever need to scroll. */
+      background: transparent;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 96vw;
+      width: auto;
+      min-width: 280px;
+      max-height: 96vh;
+      overflow: visible;
+      position: relative;
+      box-shadow: none;
+    }
+
+    .modal-close-btn {
+      /* Fixed to the screen corner, not the media box — a video with no
+         thumbnail to measure (so the card never narrows to match it), or
+         any other width mismatch, used to leave this floating in empty
+         space instead of sitting on the actual photo/video's corner. This
+         is also how native gallery/photo viewers place their close/back
+         button: always in a fixed screen corner, independent of the
+         image's own size or shape. */
+      position: fixed;
+      top: 1.25rem;
+      right: 1.25rem;
+      width: 38px;
+      height: 38px;
+      background: var(--color-navy);
+      color: var(--color-white);
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      z-index: 2010;
+      box-shadow: var(--shadow-lg);
+      transition: background-color 0.2s;
+    }
+    .modal-close-btn:hover { background: var(--color-orange); }
+
+    .modal-media-box {
+      width: auto;
+      max-width: 96vw;
+      background: var(--color-navy-deep);
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-white);
+      position: relative;
+      text-align: center;
+      padding: 0;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* Default / no-media-yet state — keeps the old fixed box so the
+       "[ Photo View: ... ]" placeholder still has something to sit in. */
+    .modal-media-box { height: 340px; }
+
+    /* Images: never crop. Height flexes to the image's own aspect ratio,
+       capped so a tall portrait photo can't blow out the viewer —
+       letterboxed on the navy background instead, the same way a phone's
+       photo gallery or Instagram's post viewer shows any orientation
+       without cutting it off. Landscape photos naturally fill the width
+       edge-to-edge; portrait photos get comfortable side letterboxing
+       instead of a crop. The cap is generous now that there's no card
+       below competing for vertical space — only a short caption is. */
+    .modal-media-box.is-image {
+      height: auto;
+      max-height: 84vh;
+    }
+    .modal-media-box.is-image img {
+      display: block;
+      width: auto;
+      height: auto;
+      max-width: 96vw;
+      max-height: 84vh;
+      object-fit: contain;
+    }
+
+    /* Video: sized from the actual uploaded thumbnail's aspect ratio via
+       JS (see openModal) so a portrait video preview gets a portrait box
+       instead of being forced into a widescreen frame. 16:9 here is only
+       the fallback for posts with no thumbnail to measure. Capped the same
+       way as images so an extreme aspect ratio can't blow out the viewer. */
+    .modal-media-box.is-video {
+      height: auto;
+      aspect-ratio: 16 / 9;
+      max-height: 84vh;
+    }
+    .modal-media-box.is-video iframe {
+      width: 100%;
+      height: 100%;
+      display: block;
+      border: 0;
+    }
+
+    @media (max-width: 700px) {
+      /* Leave a little more room on small screens for the caption below
+         and the close button above, without ever needing to scroll. */
+      .modal-media-box.is-image,
+      .modal-media-box.is-image img,
+      .modal-media-box.is-video {
+        max-height: 74vh;
+      }
+    }
+
+    /* Plain text caption under the photo — no background, no padding box,
+       just a title and category/date sitting directly on the dark backdrop. */
+    .modal-caption {
+      margin-top: 0.85rem;
+      text-align: center;
+      max-width: 96vw;
+    }
+    .modal-caption-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--color-white);
+      text-shadow: 0 1px 6px rgba(0,0,0,0.55);
+      margin-bottom: 0.2rem;
+    }
+    .modal-caption-meta {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.75);
+      text-shadow: 0 1px 6px rgba(0,0,0,0.55);
+    }
+
+    /* -------------------------------------------------------------------------- */
+    /* 9. LOCATION & CONTACT — gold "contact us today" + navy "visit us" styling  */
+    /* -------------------------------------------------------------------------- */
+    .location-section { margin-bottom: 6rem; }
+
+    .location-card-wrapper {
+      background: var(--color-navy);
+      background-image: radial-gradient(circle at 10% 90%, rgba(255,199,44,0.10), transparent 55%);
+      color: var(--color-white);
+      border-radius: var(--radius-lg);
+      padding: 3.75rem;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .location-card-wrapper h2 { color: var(--color-white); }
+    .location-card-wrapper .section-desc { color: rgba(255, 255, 255, 0.72); }
+
+    .address-box {
+      margin-top: 1.5rem;
+      background: var(--color-white);
+      color: var(--color-navy);
+      padding: 1.5rem 1.75rem;
+      border-radius: var(--radius-md);
+      border-left: 6px solid var(--color-gold);
+      font-size: 1.02rem;
+      line-height: 1.6;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .address-box strong { color: var(--color-orange); text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.04em; }
+
+    .contact-methods { display: flex; gap: 1.1rem; margin-top: 2rem; flex-wrap: wrap; }
+
+    .contact-methods .btn-primary { background-color: var(--color-gold); color: var(--color-navy); box-shadow: 0 10px 22px -6px rgba(255,199,44,0.4); }
+    .contact-methods .btn-primary:hover { background-color: var(--color-gold-deep); }
+
+
+    /* -------------------------------------------------------------------------- */
+    /* 10. FOOTER                                                                 */
+    /* -------------------------------------------------------------------------- */
+    .footer {
+      background-color: var(--color-navy-deep);
+      color: var(--color-white);
+      padding: 5rem 0 2.5rem 0;
+      border-top: 4px solid var(--color-gold);
+    }
+
+    .footer-grid { display: grid; grid-template-columns: 2fr repeat(3, 1fr); gap: 3rem; margin-bottom: 4rem; }
+
+    .footer-brand p { color: rgba(255, 255, 255, 0.7); margin-top: 1.25rem; font-size: 0.95rem; max-width: 320px; line-height: 1.6; }
+
+    .footer-column h4 { color: var(--color-gold); font-size: 1.02rem; margin-bottom: 1.5rem; font-weight: 800; }
+    .footer-column ul { list-style: none; }
+    .footer-column li { margin-bottom: 0.85rem; }
+    .footer-column a, .address { color: rgba(255, 255, 255, 0.75); font-size: 0.95rem; transition: color 0.2s; }
+    .footer-column a:hover { color: var(--color-gold); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      padding-top: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1.25rem;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .footer-bottom-links { display: flex; align-items: center; gap: 1.5rem; }
+    .footer-bottom { color: rgba(255, 255, 255, 0.75); transition: color 0.2s; }
+    .footer-bottom a:hover { color: var(--color-gold); }
+
+    /* -------------------------------------------------------------------------- */
+    /* 11. RESPONSIVE                                                            */
+    /* -------------------------------------------------------------------------- */
+    @media (max-width: 992px) {
+      .heart-grid, .location-grid { grid-template-columns: 1fr; gap: 3rem; }
+
+      .hero-grid { grid-template-columns: 1fr; min-height: unset; }
+      .hero-content { clip-path: none; padding: 3.5rem 1.5rem; }
+      .hero-content > * { max-width: 100%; }
+      .hero-media { height: 360px; }
+      .hero-image-frame { min-height: 360px; }
+      .hero-img-photo { border-left: none; border-top: 6px solid var(--color-gold); object-position: 55% 40%; }
+      .hero-badge-decoration { left: 1.5rem; bottom: 1.5rem; }
+
+      .actions-grid { grid-template-columns: 1fr; }
+      .life-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+
+      .heart-card-wrapper, .location-card-wrapper { padding: 2.25rem 1.25rem; }
+    }
+
+    @media (max-width: 850px) {
+      .nav-links, .header-cta { display: none; }
+      .mobile-menu-btn { display: flex; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .life-header { flex-direction: column; align-items: flex-start; gap: 1.25rem; }
+
+      .nav-links.active {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: var(--header-height);
+        left: 0;
+        right: 0;
+        background-color: var(--color-navy);
+        padding: 1.75rem;
+        border-bottom: 3px solid var(--color-gold);
+        box-shadow: var(--shadow-md);
+        gap: 1.25rem;
+        z-index: 999;
+      }
+
+      .mobile-menu-btn.active span:nth-child(1) { transform: translateY(8.5px) rotate(45deg); }
+      .mobile-menu-btn.active span:nth-child(2) { opacity: 0; }
+      .mobile-menu-btn.active span:nth-child(3) { transform: translateY(-8.5px) rotate(-45deg); }
+      .mobile-menu-btn span { transition: all 0.3s ease; }
+
+      .container { padding: 0 1rem; }
+
+      .footer-bottom { flex-direction: column; text-align: center; gap: 1rem; }
+      .footer-bottom-links { flex-wrap: wrap; justify-content: center; gap: 1rem; }
+
+      .heart-media { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 480px) {
+      .hero-badge-decoration { width: 128px; height: 128px; bottom: -15px; }
+      .hero-badge-decoration span.script { font-size: 1.3rem; }
+
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="container">
+      <a href="/" class="brand">
+        <img src="/asset/DGLS-Badge-two-colour.svg" class="brand-badge" alt="DAN-GRACIOUS LAND Badge">
+        <div class="brand-text">
+          <span class="brand-title">DAN-GRACIOUS LAND</span>
+          <span class="brand-subtitle">Nursery & Primary School</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/pupils">Pupils</a></li>
+          <li><a href="/life">Life at DGL</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-cta">
+        <a href="#contact" class="btn btn-gold">Enquire Now</a>
+      </div>
+
+      <button class="mobile-menu-btn" aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="level-stripe" aria-hidden="true">
+    <span class="s-orange"></span><span class="s-green"></span><span class="s-blue"></span><span class="s-purple"></span>
+  </div>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="hero-pill">Welcome to Dan-Gracious Land</div>
+          <h1 class="hero-heading">Where little learners grow, shine & <span>become more.</span></h1>
+          <p class="hero-subtext">A warm and supportive learning environment in Idimu where children learn, participate, discover their strengths, and grow with confidence.</p>
+          <div class="hero-actions">
+            <a href="#pupils" class="btn btn-primary">Meet Our Pupils</a>
+            <a href="#life" class="btn btn-outline">Explore DGL</a>
+          </div>
+        </div>
+
+        <div class="hero-media">
+          <div class="hero-image-frame">
+            <img class="hero-img-photo" src="asset/school-building.jpg" alt="Dan-Gracious Land school building" />
+            <div class="hero-badge-decoration">
+              <span class="badge-star">★ ★ ★</span>
+              <strong>Building<br>Confidence</strong>
+              <span class="script">Every day</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUICK ACTIONS -->
+    <section class="quick-actions">
+      <div class="container">
+        <div class="actions-grid">
+          <div class="action-card">
+            <div class="action-icon">👧🏽</div>
+            <div class="action-body">
+              <h3>Meet Our Pupils</h3>
+              <p>See the children across their different classes, activities, and routines.</p>
+              <a href="#pupils" class="action-link">View Pupils →</a>
+            </div>
+          </div>
+
+          <div class="action-card card-blue">
+            <div class="action-icon">📸</div>
+            <div class="action-body">
+              <h3>Life at DGL</h3>
+              <p>Take a tour through what's happening around the vibrant school environment.</p>
+              <a href="#life" class="action-link">Explore Gallery →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PUPILS ARE THE HEART -->
+    <section class="heart-section" id="pupils">
+      <div class="container">
+        <div class="heart-card-wrapper">
+          <div class="heart-grid">
+            <div class="heart-content">
+              <span class="section-tag">Student Life</span>
+              <h2 class="section-title">The pupils are the heart of DGL.</h2>
+              <p class="section-desc">From the classroom to collaborative activities, we celebrate the children, their individual progress, and the daily moments that make school special.</p>
+              <div style="margin-top: 2rem;">
+                <a href="/pupils" class="btn btn-secondary">View More →</a>
+              </div>
+            </div>
+            <div class="heart-media">
+              <div class="media-box">
+                <div class="media-photo">📚</div>
+                <div class="media-label">Classroom Learning</div>
+              </div>
+              <div class="media-box">
+                <div class="media-photo">🎨</div>
+                <div class="media-label">Group Activity</div>
+              </div>
+              <div class="media-box">
+                <div class="media-photo">✏️</div>
+                <div class="media-label">Creative Arts</div>
+              </div>
+              <div class="media-box">
+                <div class="media-photo">⚽</div>
+                <div class="media-label">Sports & Play</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LIFE AT DGL -->
+    <section class="life-section" id="life">
+      <div class="container">
+        <div class="life-header">
+          <div>
+            <span class="section-tag tag-blue">School Experience</span>
+            <h2 class="section-title">Something is always happening at DGL.</h2>
+            <p class="section-desc">A peek into our active school calendar, hands-on learning, and vibrant school events.</p>
+          </div>
+          <a href="/life" class="btn btn-outline">See Life at DGL →</a>
+        </div>
+
+        {recentPosts.length > 0 ? (
+          <div class="life-grid">
+            {recentPosts.map((post, i) => (
+              <div
+                class={`journal-card ${TONE_CYCLE[i % TONE_CYCLE.length]}`}
+                id={post.slug}
+                onclick={`openPost('${post.slug}')`}
+              >
+                <div class="card-media">
+                  {post.imageUrl ? (
+                    <img src={post.imageUrl} alt={post.title} />
+                  ) : (
+                    <span class="placeholder-icon">{post.isVideo ? '🎬' : '📸'}</span>
+                  )}
+                  {post.isVideo && <div class="video-indicator">▶</div>}
+                </div>
+                <div class="card-body">
+                  <div class="card-meta-bar">
+                    <span class="card-category">{post.categoryLabel}</span>
+                    <span class="card-date">{post.dateLabel}</span>
+                  </div>
+                  <h3 class="card-title">{post.title}</h3>
+                  <div class="card-footer">
+                    <span class="card-action-text">{post.isVideo ? 'Watch video →' : 'View story →'}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <p class="section-desc">New moments from DGL are on their way — check back soon! 🌱</p>
+        )}
+      </div>
+    </section>
+
+    <!-- LOCATION & CONTACT -->
+    <section class="location-section" id="contact">
+      <div class="container">
+        <div class="location-card-wrapper">
+            <div>
+              <span class="section-tag tag-purple">Location</span>
+              <h2 class="section-title">Visit Us in Idimu</h2>
+              <p class="section-desc">We welcome prospective parents to visit our school premises and experience our supportive community firsthand.</p>
+
+              <div class="address-box">
+                <strong>Address:</strong><br />
+                27, Asunbe Street, Off Tejumola Estate, Arobaba Street, Idimu, Lagos, Nigeria
+              </div>
+
+              <div class="contact-methods">
+                <a href={`tel:${phoneSupport}`} class="btn btn-primary">Call Us Directly</a>
+                <a href={whatsAppChannelLink} class="btn btn-outline" style="border-color: var(--color-green); color: var(--color-green); background: rgba(16, 185, 129, 0.1);">WhatsApp Us</a>
+              </div>
+            </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal-overlay" id="postModal" role="dialog" aria-modal="true">
+    <div class="modal-container" id="modalContainer">
+      <button class="modal-close-btn" onclick="closeModal()" aria-label="Close modal">&times;</button>
+      <div class="modal-media-box" id="modalMedia">
+        [ Photo / Lightweight YouTube Player Container ]
+      </div>
+      <div class="modal-caption">
+        <h2 class="modal-caption-title" id="modalTitle">Moment Title</h2>
+        <div class="modal-caption-meta" id="modalMeta">Category · Session</div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="brand" style="color: var(--color-white);">
+            <img src="asset/DGLS-Badge-two-colour.svg" class="brand-badge" alt="DAN-GRACIOUS LAND Badge">
+            <div class="brand-text">
+              <span class="brand-title" style="color: var(--color-white);">DAN-GRACIOUS LAND</span>
+              <span class="brand-subtitle" style="color: rgba(255,255,255,0.7);">Nursery & Primary School</span>
+            </div>
+          </a>
+          <p>More than a school. A place to grow. Serving nursery and primary pupils in Idimu, Lagos State.</p>
+        </div>
+
+        <div class="footer-column">
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/pupils">Pupils</a></li>
+            <li><a href="/life">Life at DGL</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>School</h4>
+          <ul>
+            <li><a href="/about">Our Philosophy</a></li>
+            <li><a href="/leadership">School Leadership</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href={`tel:${phoneSupport}`}>Phone Support</a></li>
+            <li><a href={whatsAppChannelLink}>WhatsApp Channel</a></li>
+            <li><a href="/#contact">27, Asunbe Street, Idimu</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© <span id="year"></span> Dan-Gracious Land Nursery & Primary School. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="/privacy-policy">Privacy Policy</a>
+          <div class="creator-credit">
+            Built by <a href="https://emmystack01.com/" target="_blank" rel="noopener" style="color: var(--color-gold); text-decoration: underline;">Emmy STACK01</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- CMS-sourced post data, rendered as inert JSON (not executed code) so
+       the behavioral script below can stay a plain is:inline script. -->
+  <script type="application/json" id="posts-data" set:html={JSON.stringify(clientPosts).replace(/</g, '\\u003c')}></script>
+
+  <script src="/asset/script/year.js" is:inline></script>
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+      const mobileBtn = document.querySelector('.mobile-menu-btn');
+      const navLinks = document.querySelector('.nav-links');
+      const navItems = document.querySelectorAll('.nav-links a');
+
+      mobileBtn.addEventListener('click', () => {
+        const isOpen = navLinks.classList.toggle('active');
+        mobileBtn.classList.toggle('active');
+        mobileBtn.setAttribute('aria-expanded', isOpen);
+      });
+
+      navItems.forEach(item => {
+        item.addEventListener('click', () => {
+          if (navLinks.classList.contains('active')) {
+            navLinks.classList.remove('active');
+            mobileBtn.classList.remove('active');
+            mobileBtn.setAttribute('aria-expanded', 'false');
+          }
+        });
+      });
+    });
+
+    // Modal Post Detail View
+    let currentPostId = '';
+    let currentPostTitle = '';
+    let currentMediaNaturalWidth = null;
+    let currentMediaNaturalHeight = null;
+
+    function sizeModalToMedia() {
+      const container = document.getElementById('modalContainer');
+      if (!container) return;
+      if (!currentMediaNaturalWidth || !currentMediaNaturalHeight) {
+        container.style.width = '';
+        return;
+      }
+      const isMobile = window.innerWidth <= 700;
+      const maxHeightPx = (isMobile ? 0.7 : 0.8) * window.innerHeight;
+      const maxWidthPx = Math.min(window.innerWidth - 48, 720);
+      const scale = Math.min(1, maxWidthPx / currentMediaNaturalWidth, maxHeightPx / currentMediaNaturalHeight);
+      const displayWidth = Math.round(currentMediaNaturalWidth * scale);
+      container.style.width = Math.max(280, Math.min(displayWidth, maxWidthPx)) + 'px';
+    }
+
+    window.addEventListener('resize', () => {
+      if (document.getElementById('postModal').classList.contains('open')) {
+        sizeModalToMedia();
+      }
+    });
+
+    // CMS-sourced posts, read from the JSON data block Astro rendered
+    // above. Keyed by the same stable slug used on the cards and in
+    // shareMoment() links, so a shared link (?post=post-3) can open the
+    // exact same content the card itself opens, without duplicating post
+    // data inside this script.
+    const postsDataEl = document.getElementById('posts-data');
+    const POSTS = postsDataEl ? JSON.parse(postsDataEl.textContent) : {};
+
+    function openPost(postId) {
+      const post = POSTS[postId];
+      if (!post) return;
+      openModal(post.title, post.meta, post.text, postId, post.videoUrl || null, post.imageUrl || null);
+    }
+
+    function openModal(title, meta, text, postId, videoUrl = null, imageUrl = null) {
+      currentPostId = postId;
+      currentPostTitle = title;
+
+      document.getElementById('modalTitle').textContent = title;
+      document.getElementById('modalMeta').textContent = meta;
+
+      const mediaBox = document.getElementById('modalMedia');
+      mediaBox.classList.remove('is-video', 'is-image');
+      mediaBox.style.aspectRatio = '';
+      currentMediaNaturalWidth = null;
+      currentMediaNaturalHeight = null;
+      sizeModalToMedia();
+      mediaBox.replaceChildren();
+      if (videoUrl) {
+        const autoplaySeparator = videoUrl.includes('?') ? '&' : '?';
+        mediaBox.classList.add('is-video');
+        const iframe = document.createElement('iframe');
+        iframe.src = `${videoUrl}${autoplaySeparator}autoplay=1`;
+        iframe.title = title;
+        iframe.width = '100%';
+        iframe.height = '100%';
+        iframe.frameBorder = '0';
+        iframe.allow = 'autoplay; encrypted-media';
+        iframe.allowFullscreen = true;
+        mediaBox.appendChild(iframe);
+        if (imageUrl) {
+          const probe = new Image();
+          probe.onload = () => {
+            if (mediaBox.classList.contains('is-video') && currentPostId === postId) {
+              mediaBox.style.aspectRatio = `${probe.naturalWidth} / ${probe.naturalHeight}`;
+              currentMediaNaturalWidth = probe.naturalWidth;
+              currentMediaNaturalHeight = probe.naturalHeight;
+              sizeModalToMedia();
+            }
+          };
+          probe.src = imageUrl;
+        }
+      } else if (imageUrl) {
+        mediaBox.classList.add('is-image');
+        const img = document.createElement('img');
+        img.alt = title;
+        img.onload = () => {
+          if (currentPostId === postId) {
+            currentMediaNaturalWidth = img.naturalWidth;
+            currentMediaNaturalHeight = img.naturalHeight;
+            sizeModalToMedia();
+          }
+        };
+        img.src = imageUrl;
+        mediaBox.appendChild(img);
+      } else {
+        const placeholder = document.createElement('div');
+        placeholder.textContent = `[ Photo View: ${title} ]`;
+        mediaBox.appendChild(placeholder);
+      }
+
+      document.getElementById('postModal').classList.add('open');
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('postModal');
+      modal.classList.remove('open');
+      document.getElementById('modalMedia').replaceChildren();
+    }
+
+    // Deliberately no click-outside-to-close listener here — only the X
+    // button should close this viewer.
+
+    // Web Share API with Link Fallback
+    function shareMoment(title, postId) {
+      const shareUrl = `${window.location.origin}${window.location.pathname}?post=${postId}`;
+      const shareText = `See this moment from Dan-Gracious Land Nursery & Primary School: ${title}! ✨`;
+
+      if (navigator.share) {
+        navigator.share({
+          title: 'Life at DGL Moment',
+          text: shareText,
+          url: shareUrl,
+        }).catch(() => {});
+      } else {
+        navigator.clipboard.writeText(`${shareText} ${shareUrl}`).then(() => {
+          alert('Link copied to clipboard! You can now paste and share it on WhatsApp.');
+        });
+      }
+    }
+
+    // Open the shared post directly when arriving via a copied link
+    // (?post=post-1, as generated by shareMoment above). Falls back to
+    // a #post-1 hash too, in case a link was shared that way instead.
+    (function openSharedPostFromUrl() {
+      const params = new URLSearchParams(window.location.search);
+      const postId = params.get('post') || window.location.hash.replace('#', '');
+      if (postId && POSTS[postId]) {
+        openPost(postId);
+      }
+    })();
+  </script>
+</body>
+</html>

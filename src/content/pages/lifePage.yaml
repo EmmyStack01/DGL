@@ -30,10 +30,13 @@ post3:
         allowfullscreen></iframe>
       thumbnail: /assets/life/post3/media/value/thumbnail.jpg
 post4:
-  publishedDate: 2026-09-07
-  category: classroom
+  title: New post trial
+  publishedDate: 2026-09-11
+  category: events
   media:
     discriminant: image
+    value: /assets/life/post4/media/value.jpg
+  description: Here's the next post trial
 post5:
   publishedDate: 2026-09-07
   category: classroom

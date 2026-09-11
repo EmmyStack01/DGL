@@ -1,42 +1,24 @@
 post1:
-  title: Happy day
   publishedDate: 2026-09-08
   category: classroom
   media:
     discriminant: image
-    value: /assets/life/post1/media/value.jpg
-  description: 'Monday Question Researcher '
 post2:
-  title: Chess match day
   publishedDate: 2026-09-08
   category: classroom
   media:
     discriminant: image
-    value: /assets/life/post2/media/value.jpg
 post3:
-  title: YouTube video
   publishedDate: 2026-09-09
   category: events
   media:
     discriminant: video
-    value:
-      url: >-
-        <iframe width="560" height="315"
-        src="https://www.youtube.com/embed/T3RdsE7oby4?si=Na-cPe31eEA1rDw_"
-        title="YouTube video player" frameborder="0" allow="accelerometer;
-        autoplay; clipboard-write; encrypted-media; gyroscope;
-        picture-in-picture; web-share"
-        referrerpolicy="strict-origin-when-cross-origin"
-        allowfullscreen></iframe>
-      thumbnail: /assets/life/post3/media/value/thumbnail.jpg
+    value: {}
 post4:
-  title: New post trial
   publishedDate: 2026-09-11
   category: events
   media:
     discriminant: image
-    value: /assets/life/post4/media/value.jpg
-  description: Here's the next post trial
 post5:
   publishedDate: 2026-09-07
   category: classroom

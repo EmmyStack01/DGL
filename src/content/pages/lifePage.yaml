@@ -1,19 +1,13 @@
 post1:
-  title: Children's day
-  publishedDate: 2026-09-12
-  category: events
-  media:
-    discriminant: image
-    value: /assets/life/post1/media/value.jpg
-post2:
-  title: Inter House sports day
   publishedDate: 2026-09-12
   category: classroom
   media:
-    discriminant: video
-    value:
-      url: https://youtu.be/D-bmyUynwjk?si=k89weWEhFyWVyzBd
-      thumbnail: /assets/life/post2/media/value/thumbnail.png
+    discriminant: image
+post2:
+  publishedDate: 2026-09-12
+  category: classroom
+  media:
+    discriminant: image
 post3:
   publishedDate: 2026-09-12
   category: classroom

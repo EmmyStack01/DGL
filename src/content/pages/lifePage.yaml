@@ -1,19 +1,26 @@
 post1:
-  publishedDate: 2026-09-08
-  category: classroom
-  media:
-    discriminant: image
-post2:
-  publishedDate: 2026-09-08
-  category: classroom
-  media:
-    discriminant: image
-post3:
-  publishedDate: 2026-09-09
-  category: events
+  title: Trial Two
+  publishedDate: 2026-09-12
+  category: activities
   media:
     discriminant: video
-    value: {}
+    value:
+      url: https://youtu.be/uoOulW8sn1s?si=lIVk59u0E0PHI6dY
+      thumbnail: /assets/life/post1/media/value/thumbnail.jpg
+post2:
+  title: Next post trial
+  publishedDate: 2026-09-12
+  category: classroom
+  media:
+    discriminant: image
+    value: /assets/life/post2/media/value.jpg
+post3:
+  title: By Gun now now
+  publishedDate: 2026-09-12
+  category: events
+  media:
+    discriminant: image
+    value: /assets/life/post3/media/value.jpg
 post4:
   publishedDate: 2026-09-11
   category: events

@@ -6,20 +6,26 @@ post1:
     discriminant: image
     value: /assets/life/post1/media/value.jpg
 post2:
+  title: Culture day photo 2 (2025/2026 Session)
   publishedDate: 2026-09-12
-  category: classroom
+  category: events
   media:
     discriminant: image
+    value: /assets/life/post2/media/value.jpg
 post3:
+  title: Making Snacks (Chin Chin) with Primary four (2025/2026 Session)
   publishedDate: 2026-09-12
-  category: classroom
+  category: activities
   media:
     discriminant: image
+    value: /assets/life/post3/media/value.jpg
 post4:
+  title: Snacks (Chin Chin) Practical with Primary four (2025/2026 Session)
   publishedDate: 2026-09-12
-  category: classroom
+  category: activities
   media:
     discriminant: image
+    value: /assets/life/post4/media/value.jpg
 post5:
   publishedDate: 2026-09-07
   category: classroom

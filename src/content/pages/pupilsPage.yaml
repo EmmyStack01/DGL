@@ -1,4 +1,12 @@
 currentSession: 2026/2027
 awardsSession: 2025/2026
-classPhotos: []
+classPhotos:
+  - classLevel: nursery-1
+    photo: /assets/classes/classPhotos/0/photo.jpg
+  - classLevel: nursery-2
+    photo: /assets/classes/classPhotos/1/photo.jpg
+  - classLevel: primary-1
+    photo: /assets/classes/classPhotos/2/photo.jpg
+  - classLevel: primary-2
+    photo: /assets/classes/classPhotos/3/photo.jpg
 celebratedPupils: []

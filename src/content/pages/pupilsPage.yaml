@@ -9,4 +9,8 @@ classPhotos:
     photo: /assets/classes/classPhotos/2/photo.jpg
   - classLevel: primary-2
     photo: /assets/classes/classPhotos/3/photo.jpg
+  - classLevel: primary-3
+    photo: /assets/classes/classPhotos/4/photo.jpg
+  - classLevel: primary-4
+    photo: /assets/classes/classPhotos/5/photo.jpg
 celebratedPupils: []

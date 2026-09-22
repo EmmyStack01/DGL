@@ -380,7 +380,7 @@ const achievementCards = (pupilsPageData?.celebratedPupils ?? []).map((p) => {
       max-width: 500px;
     }
 
-    .hero-photo-box { position: relative; height: 100%; }
+    .hero-photo-box { position: relative; height: 100%; display: none; }
 
     .hero-photo-placeholder {
       height: 100%;
@@ -706,8 +706,13 @@ const achievementCards = (pupilsPageData?.celebratedPupils ?? []).map((p) => {
       .hero-pupils-grid { grid-template-columns: 1fr; min-height: unset; }
       .hero-pupils-content { clip-path: none; padding: 3.25rem 1.5rem; }
       .hero-pupils-content > * { max-width: 100%; }
-      .hero-photo-box { height: 300px; }
-      .hero-photo-placeholder { min-height: 300px; border-left: none; border-top: 6px solid var(--color-gold); }
+    }
+
+    @media (min-width: 992px) {
+      .hero-photo-box { display: block; }
+    }
+    @media (max-width: 415px) {
+      .hero-photo-box { display: block; }
     }
 
     @media (max-width: 900px) {
@@ -983,7 +988,7 @@ const achievementCards = (pupilsPageData?.celebratedPupils ?? []).map((p) => {
           <h1 class="hero-pupils-heading">Meet the pupils of DGL</h1>
           <p class="hero-pupils-subtext">From their first classroom experiences to their biggest achievements, we're proud to celebrate the children who make Dan-Gracious Land special.</p>
         </div>
-          <img class="hero-photo-box" src="/asset/pupils-different classes.jpg" alt="Dan Gracious School Pupils: Different Classes">
+        <img class="hero-photo-box" src="/asset/pupils-different classes.jpg" alt="Dan Gracious School Pupils: Different Classes">
       </div>
     </section>
 

@@ -490,7 +490,7 @@ const clientPosts = Object.fromEntries(
       max-width: 500px;
     }
 
-    .hero-media { position: relative; height: 100%; }
+    .hero-media { position: relative; height: 100%; display: none; }
 
     .hero-photo-placeholder {
       position: relative;
@@ -1050,8 +1050,6 @@ const clientPosts = Object.fromEntries(
       .hero-grid, .featured-card { grid-template-columns: 1fr; }
       .hero-content { clip-path: none; padding: 3.25rem 1.5rem; }
       .hero-content > * { max-width: 100%; }
-      .hero-media { height: 300px; }
-      .hero-photo-placeholder { min-height: 300px; border-left: none; border-top: 6px solid var(--color-gold); }
 
       .journal-card.col-span-8,
       .journal-card.col-span-6,
@@ -1096,7 +1094,14 @@ const clientPosts = Object.fromEntries(
       .footer-grid { grid-template-columns: 1fr; }
       .featured-content { padding: 1.75rem; }
     }
-
+    
+    @media (min-width: 992px) {
+      .hero-media { display: block; }
+    }
+    @media (max-width: 415px) {
+      .hero-media { display: block; }
+    }
+    
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
         animation-duration: 0.01ms !important;

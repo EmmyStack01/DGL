@@ -1,8 +1,10 @@
 post1:
+  title: Culture day photo 1 (2025/2026 Session)
   publishedDate: 2026-09-12
-  category: classroom
+  category: events
   media:
     discriminant: image
+    value: /assets/life/post1/media/value.jpg
 post2:
   publishedDate: 2026-09-12
   category: classroom

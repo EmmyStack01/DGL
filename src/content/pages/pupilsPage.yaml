@@ -17,4 +17,76 @@ classPhotos:
     photo: /assets/classes/classPhotos/6/photo.jpg
   - classLevel: primary-5
     photo: /assets/classes/classPhotos/7/photo.jpg
-celebratedPupils: []
+celebratedPupils:
+  - pupilName: Okafor mba Ebuka
+    classLevel: primary-1
+    awardTitle: 1st Position
+  - pupilName: Aziegbe Nathaniel
+    classLevel: primary-1
+    awardTitle: 2nd Position
+  - pupilName: Ohome Timilehin
+    classLevel: primary-1
+    awardTitle: 3rd Position
+  - pupilName: Samuel Jireh
+    classLevel: primary-1
+    awardTitle: Punctuality
+  - pupilName: Ewone Wealth
+    classLevel: primary-1
+    awardTitle: Well Behaved
+  - pupilName: Aluwuo Angel
+    classLevel: primary-2
+    awardTitle: 1st Position
+  - pupilName: Cajetan Victor
+    classLevel: primary-2
+    awardTitle: 2nd Position
+  - pupilName: Abilogun Evangeline
+    classLevel: primary-2
+    awardTitle: 3rd Position
+  - pupilName: Cajetan Victor
+    classLevel: primary-2
+    awardTitle: Punctuality
+  - pupilName: Aluwuo Angel
+    classLevel: primary-2
+    awardTitle: Well Behaved
+  - pupilName: Onifade Abdurahman
+    classLevel: primary-3
+    awardTitle: 1st Position
+  - pupilName: Ezeh Racheal
+    classLevel: primary-3
+    awardTitle: 2nd Position
+  - pupilName: Okparocha Sharon
+    classLevel: primary-3
+    awardTitle: 3rd Position
+  - pupilName: Nwobodo Chidindu
+    classLevel: primary-3
+    awardTitle: Well Behaved
+  - pupilName: Onyemaechi Kendrick
+    classLevel: primary-4
+    awardTitle: 1st Position
+  - pupilName: Onyemaechi Kimberly
+    classLevel: primary-4
+    awardTitle: 2nd Position
+  - pupilName: Onyechere Perpetual
+    classLevel: primary-4
+    awardTitle: 3rd Position
+  - pupilName: Samuel Tiffany
+    classLevel: primary-4
+    awardTitle: Punctuality
+  - pupilName: Onyechere Perpetual
+    classLevel: primary-4
+    awardTitle: Well Behaved
+  - pupilName: Dosunmu Success
+    classLevel: primary-5
+    awardTitle: 1st Position
+  - pupilName: Aluwuo Maxmillian
+    classLevel: primary-5
+    awardTitle: 2nd Position
+  - pupilName: Ezeakwu Bethel
+    classLevel: primary-5
+    awardTitle: 3rd Position
+  - pupilName: Nduka Kosi
+    classLevel: primary-5
+    awardTitle: Punctuality
+  - pupilName: Oyesola Abdusalam
+    classLevel: primary-5
+    awardTitle: Well Behaved

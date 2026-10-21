@@ -376,24 +376,22 @@ const whatsAppChannelLink = siteSettings?.whatsAppChannelLink ?? 'https://wa.me/
       border-top: 6px solid var(--color-gold);
     }
 
-    .featured-portrait-wrap { position: relative; }
+    .featured-portrait-wrap {
+  position: relative;
+  width: 100%;
+  height: 380px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
 
-    .featured-portrait {
-      width: 100%;
-      height: 380px;
-      background: linear-gradient(160deg, #FFF1C2 0%, #F4EFE0 100%);
-      border-radius: var(--radius-md);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 1.5rem;
-      color: var(--color-navy);
-      position: relative;
-      overflow: hidden;
-      box-shadow: var(--shadow-md);
-    }
+.featured-portrait {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: inherit;
+  box-shadow: var(--shadow-md);
+}
 
     .featured-portrait-icon { font-size: 3.5rem; margin-bottom: 1rem; }
 
@@ -719,12 +717,29 @@ const whatsAppChannelLink = siteSettings?.whatsAppChannelLink ?? 'https://wa.me/
     /* 15. RESPONSIVE                                                            */
     /* -------------------------------------------------------------------------- */
     @media (max-width: 992px) {
-      .featured-card { grid-template-columns: 1fr; padding: 2.25rem; }
-      .featured-portrait { height: 300px; }
-      .connect-pupils-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .footer-grid { grid-template-columns: 1fr 1fr; }
-      .connect-pupils-strip, .life-action-section { padding: 2.25rem 1.25rem; }
-    }
+  .featured-card {
+    grid-template-columns: 1fr;
+    padding: 2.25rem;
+  }
+
+  .featured-portrait-wrap {
+    height: 300px;
+  }
+
+  .connect-pupils-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .connect-pupils-strip,
+  .life-action-section {
+    padding: 2.25rem 1.25rem;
+  }
+}
 
     @media (max-width: 850px) {
       .nav-links, .header-cta { display: none; }

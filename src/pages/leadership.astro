@@ -376,22 +376,22 @@ const whatsAppChannelLink = siteSettings?.whatsAppChannelLink ?? 'https://wa.me/
       border-top: 6px solid var(--color-gold);
     }
 
-.featured-portrait-wrap {
-  position: relative;
-  width: 100%;
-  height: 380px;
-  border-radius: var(--radius-md);
-  overflow: visible;
-}
+    .featured-portrait-wrap {
+      position: relative;
+      width: 100%;
+      height: 380px;
+      border-radius: var(--radius-md);
+      overflow: visible;
+    }
 
-.featured-portrait {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  display: block;
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-md);
-}
+    .featured-portrait {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-md);
+    }
 
     .featured-portrait-icon { font-size: 3.5rem; margin-bottom: 1rem; }
 
@@ -422,26 +422,26 @@ const whatsAppChannelLink = siteSettings?.whatsAppChannelLink ?? 'https://wa.me/
     }
 
     .badge-motif-tag {
-  position: absolute;
-  top: 12px;
-  right: 12px;
+      position: absolute;
+      top: -14px;
+      right: -14px;
+    
+      background: var(--color-gold);
+      color: var(--color-navy);
 
-  background: var(--color-gold);
-  color: var(--color-navy);
-
-  font-size: 0.75rem;
-  font-weight: 800;
-  padding: 0.45rem 0.9rem;
-
-  border-radius: var(--radius-full);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-
-  box-shadow: var(--shadow-sm);
-
-  z-index: 10;
-  white-space: nowrap;
-}
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 0.45rem 0.9rem;
+    
+      border-radius: var(--radius-full);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    
+      box-shadow: var(--shadow-sm);
+    
+      z-index: 10;
+      white-space: nowrap;
+    }
 
     .featured-message-label {
       font-size: 0.85rem;
@@ -722,30 +722,30 @@ const whatsAppChannelLink = siteSettings?.whatsAppChannelLink ?? 'https://wa.me/
     /* -------------------------------------------------------------------------- */
     /* 15. RESPONSIVE                                                            */
     /* -------------------------------------------------------------------------- */
-@media (max-width: 992px) {
-  .featured-card {
-    grid-template-columns: 1fr;
-    padding: 2.25rem;
-  }
+    @media (max-width: 992px) {
+      .featured-card {
+        grid-template-columns: 1fr;
+        padding: 2.25rem;
+      }
+    
+      .featured-portrait-wrap {
+        height: 300px;
+      }
+    
+      .connect-pupils-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
 
-  .featured-portrait-wrap {
-    height: 300px;
-  }
-
-  .connect-pupils-grid {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-  }
-
-  .footer-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .connect-pupils-strip,
-  .life-action-section {
-    padding: 2.25rem 1.25rem;
-  }
-}
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    
+      .connect-pupils-strip,
+      .life-action-section {
+        padding: 2.25rem 1.25rem;
+      }
+    }
 
     @media (max-width: 850px) {
       .nav-links, .header-cta { display: none; }
